@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026195155) do
+ActiveRecord::Schema.define(version: 20161026214844) do
 
   create_table "poses", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20161026195155) do
   create_table "sequence_poses", force: :cascade do |t|
     t.integer "sequence_id"
     t.integer "pose_id"
+    t.boolean "repeated"
   end
 
   create_table "sequences", force: :cascade do |t|

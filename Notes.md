@@ -34,7 +34,10 @@ Tables:
     Sequence_poses
       sequence id
       pose id
-      ? pose description
+      repeated? t/f
+        user creates a sequence of poses and then when the sequence is created
+        it checks if there’s more than one instance of a pose and if so, sets
+        repeated to true
 
 
 User type? Creator/User
