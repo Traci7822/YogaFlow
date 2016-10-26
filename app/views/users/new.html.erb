@@ -1,0 +1,20 @@
+<br />
+<h1>Sign up for a YogaFlow account!</h1>
+<br />
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <div class="fields_with_errors">
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :username %><br />
+  <%= f.text_field :username %><br />
+  <%= f.label :password %><br />
+  <%= f.text_field :password %><br /><br />
+  <%= f.submit %>
+<% end %>

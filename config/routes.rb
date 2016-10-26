@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
+  root to: 'sequences#index'
+
+  get 'sign_up', to: 'users#new', as: 'sign_up'
+  get 'log_in', to: 'sessions#new', as: 'log_in'
+  get 'log_out', to: 'sessions#destroy', as: 'log_out'
+
   resources :poses
   resources :sequences
   resources :users
-  resources :sessions, only: [:new, :create]
+  resources :sessions
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # See how all your routes lay out with 'rake routes'.
 
-  # You can have the root of your site routed with "root"
+  # You can have the root of your site routed with 'root'
   # root 'welcome#index'
 
   # Example of regular route:

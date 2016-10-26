@@ -1,7 +1,9 @@
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-  <%= f.submit %>
+<h1>Log in to your YogaFlow account!</h1>
+
+<%= form_tag sessions_path do %>
+  <%= label_tag :username %><br />
+  <%= text_field_tag :username %><br />
+  <%= label_tag :password %><br />
+  <%= text_field_tag :password %><br />
+  <%= submit_tag "Log In" %>
 <% end %>
