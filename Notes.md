@@ -12,7 +12,6 @@ Models:
   Pose
     has_many :sequence_poses
     has_many :sequences, through: :sequence_poses
-    has_many :users, through: :sequences
 
 Controllers:
   Users
