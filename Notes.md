@@ -38,6 +38,7 @@ Tables:
         user creates a sequence of poses and then when the sequence is created
         it checks if there’s more than one instance of a pose and if so, sets
         repeated to true
+        or
         (first answer: http://stackoverflow.com/questions/315792/how-to-avoid-duplicates-in-a-has-many-through-relationship)
 
 User type? Creator/User

@@ -1,5 +1,7 @@
 class SequencesController < ApplicationController
   def index
-    binding.pry
+    @sequences = Sequence.all
+    @poses = Pose.all
+    @users = User.all
   end
 end
