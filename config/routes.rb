@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get 'log_in', to: 'sessions#new', as: 'log_in'
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
 
+  resources :sequences do
+    resources :poses
+  end
+
   resources :poses
   resources :sequences
   resources :users
