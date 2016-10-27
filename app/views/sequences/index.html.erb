@@ -1,8 +1,15 @@
-<h1 align="center">Welcome to YogaFlow, <%= current_user.username %>!</h1>
+<h1 align="center">Welcome to YogaFlow
+  <% if current_user %>
+      <%= current_user.username %>!</h1>
+    <% else %>
+      "Future Yogi!"
+    <% end %>
 <hr width="50%" />
 
-<% if current_user %>
+<div class="header" algin="center">
+  <% if current_user %>
     <%= render '/layouts/user_header' %>
   <% else %>
     <%= render '/layouts/guest_header' %>
-<% end %>
+  <% end %>
+</div>
