@@ -1,15 +1,7 @@
-<h1 align="center">Welcome to YogaFlow
-  <% if current_user %>
-      <%= current_user.username %>!</h1>
-    <% else %>
-      "Future Yogi!"
-    <% end %>
-<hr width="50%" />
+<h2>Please select a yoga sequence:</h2>
 
-<div class="header" algin="center">
-  <% if current_user %>
-    <%= render '/layouts/user_header' %>
-  <% else %>
-    <%= render '/layouts/guest_header' %>
-  <% end %>
-</div>
+<h2><% @sequences.each do |sequence| %>
+  <h3><%= sequence.title %><br /><%= sequence.number_of_poses %> Poses,
+    Focus: <%= sequence.focus %>, Difficulty Rating: <%= sequence.difficulty %>
+<% end %>
+</h2>
