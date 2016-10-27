@@ -3,14 +3,16 @@
   <%= f.label :title %><br />
   <%= f.text_field :title %><br />
   <br />
-  Number of Poses:<br />
-  <%= f.select :number_of_poses, options_for_select(0..50)%><br />
-  <br />
   Difficulty:<br />
   <%= f.select :difficulty, options_for_select(1..5) %>
   <br />
   <br />
+  Add poses to this sequence:
+  <h5>hold command to select multiple</h5>
+  <%= f.collection_select :pose_ids, @poses, :id, :name, {include_blank: true }, {multiple: true } %>
+  <br />
   <%= f.submit %>
   </h3>
+  <br />
 
 <% end %>

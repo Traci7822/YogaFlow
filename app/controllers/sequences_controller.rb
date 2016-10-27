@@ -6,6 +6,7 @@ class SequencesController < ApplicationController
   end
 
   def new
+    @poses = Pose.all
     if current_user
       @sequence = Sequence.new
     else
