@@ -14,6 +14,10 @@ class SequencesController < ApplicationController
     end
   end
 
+  def create
+    binding.pry
+  end
+
   def show
     @sequence = Sequence.find(params[:id])
   end
