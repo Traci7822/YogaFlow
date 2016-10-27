@@ -1,0 +1,9 @@
+<%= form_for(@sequence) do |f| %>
+  <h3>
+  <%= f.label :title %><br />
+  <%= f.text_field :title %><br />
+  Number of Poses:<br />
+  <%= f.select :number_of_poses, options_for_select(0..50)%>
+  <%= f.label :focus %>
+  </h3>
+<% end %>

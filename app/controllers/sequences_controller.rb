@@ -7,6 +7,7 @@ class SequencesController < ApplicationController
 
   def new
     if current_user
+      @sequence = Sequence.new
     else
       redirect_to log_in_path
     end
