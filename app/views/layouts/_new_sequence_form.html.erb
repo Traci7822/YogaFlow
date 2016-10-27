@@ -2,8 +2,15 @@
   <h3>
   <%= f.label :title %><br />
   <%= f.text_field :title %><br />
+  <br />
   Number of Poses:<br />
-  <%= f.select :number_of_poses, options_for_select(0..50)%>
-  <%= f.label :focus %>
+  <%= f.select :number_of_poses, options_for_select(0..50)%><br />
+  <br />
+  Difficulty:<br />
+  <%= f.select :difficulty, options_for_select(1..5) %>
+  <br />
+  <br />
+  <%= f.submit %>
   </h3>
+
 <% end %>
