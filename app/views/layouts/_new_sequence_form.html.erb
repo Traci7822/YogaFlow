@@ -1,17 +1,23 @@
 <%= form_for(@sequence) do |f| %>
-  <h3><%= f.label :title %><br /></h3>
-  <%= f.text_field :title %><br />
+  <h3>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </h3>
   <br />
-  <h3><%= f.label :difficulty %></h3>
+  <br />
+  <h3>
+    <%= f.label :difficulty %>
+  </h3>
   <h5>1-5 scale, 1 = easiest, 5 = hardest</h5>
   <%= f.select :difficulty, options_for_select(1..5) %>
   <br />
   <br />
-  <h3><%= f.label :add_poses_to_this_sequence %></h3>
-  <h5>hold command to select multiple</h5>
-  <%= f.collection_select :pose_ids, @poses, :id, :name, {include_blank: true },
-  {multiple: true } %>
+  <%= f.fields_for :poses_attributes do |pose_builder| %>
+  <%= pose_builder.label :add_poses_to_this_sequence %>
   <br />
-  <br /> 
+  <%= pose_builder.collection_check_boxes(:pose_id, @poses, :id, :name) %>
+  <% end %>
+  <br />
+  <br />
   <%= f.submit %>
 <% end %>

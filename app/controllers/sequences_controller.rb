@@ -15,10 +15,19 @@ class SequencesController < ApplicationController
   end
 
   def create
-    binding.pry
+    #sequence_params not accepting pose_id
+    @sequence = Sequence.new(sequence_params)
+    #build @sequence.poses and save to sequence_poses table
+    redirect_to sequences_path
   end
 
   def show
     @sequence = Sequence.find(params[:id])
+  end
+
+  private
+
+  def sequence_params
+    params.require(:sequence).permit(:title, :difficulty, poses_attributes: [:pose_id])
   end
 end
