@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-github'
 gem 'omniauth'
 gem 'bcrypt'
 gem 'pry'
