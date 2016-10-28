@@ -13,10 +13,8 @@
   <br />
   <br />
   <%= f.fields_for :poses_attributes do |pose_builder| %>
-    <% 15.times do %>
       <%= pose_builder.label :add_pose_to_this_sequence %>
       <%= pose_builder.collection_select(:pose_id, @poses, :id, :name) %><br />
-    <% end %>
   <% end %>
   <br />
   <br />

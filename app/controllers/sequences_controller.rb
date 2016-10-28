@@ -6,9 +6,11 @@ class SequencesController < ApplicationController
   end
 
   def new
-    @poses = Pose.all
     if current_user
       @sequence = Sequence.new
+      15.times do
+        @sequence.poses.build
+      end
     else
       redirect_to log_in_path
     end
