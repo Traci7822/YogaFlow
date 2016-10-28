@@ -1,10 +1,12 @@
-<h1>Please select a yoga sequence:</h1>
+<% if current_user %>
+  <h1>Please select a yoga sequence:</h1>
 
-<% @sequences.each do |sequence| %>
-  <h3><h2><%= link_to sequence.title, sequence_path(sequence) %></h2>
+  <% @sequences.each do |sequence| %>
+    <h3><h2><%= link_to sequence.title, sequence_path(sequence) %></h2>
 
+  <% end %>
+
+  <hr align="left" width="25%" />
+
+  <h2><%= link_to "Create a new sequence", new_sequence_path %></h2>
 <% end %>
-
-<hr align="left" width="25%" />
-
-<h2><%= link_to "Create a new sequence", new_sequence_path %></h2>
