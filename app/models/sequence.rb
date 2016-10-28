@@ -10,4 +10,5 @@ class Sequence < ActiveRecord::Base
       self.poses.build(pose_attributes)
     end
   end
+
 end

@@ -31,6 +31,6 @@ class SequencesController < ApplicationController
   private
 
   def sequence_params
-    params.require(:sequence).permit(:title, :difficulty, poses_attributes: [])
+    params.require(:sequence).permit(:title, :difficulty, poses_attributes: [:name, :description])
   end
 end
