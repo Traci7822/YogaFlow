@@ -7,7 +7,6 @@ class Sequence < ActiveRecord::Base
 
   def poses_attributes=(poses_attributes)
     poses_attributes.each do |i, pose_attributes|
-      binding.pry
       self.poses.build(pose_attributes)
     end
   end

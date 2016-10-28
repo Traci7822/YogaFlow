@@ -15,6 +15,7 @@ class SequencesController < ApplicationController
   end
 
   def create
+    binding.pry
     #sequence_params not accepting pose_id
     @sequence = Sequence.new(sequence_params)
     #build @sequence.poses and save to sequence_poses table
@@ -28,6 +29,6 @@ class SequencesController < ApplicationController
   private
 
   def sequence_params
-    params.require(:sequence).permit(:title, :difficulty, poses_attributes: [:pose_id])
+    params.require(:sequence).permit(:title, :difficulty, poses_attributes: [])
   end
 end
