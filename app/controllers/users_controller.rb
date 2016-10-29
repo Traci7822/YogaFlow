@@ -11,6 +11,9 @@ class UsersController < ApplicationController
       render "sessions/new"
   end
 
+  def show
+  end
+
   private
 
   def user_params

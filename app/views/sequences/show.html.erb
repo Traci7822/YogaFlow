@@ -9,6 +9,9 @@
   </ul>
 
   <h2>
-    List @sequence.poses here
+    <% @sequence.poses.each do |pose| %>
+      <%= pose.name %>
+      <%= pose.description %>
+    <% end %>
   </h2>
 </div>
