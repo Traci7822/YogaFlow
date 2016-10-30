@@ -22,18 +22,18 @@ class SequencesController < ApplicationController
     @sequence_array = []
 
     params[:sequence].each do |param|
-      if param == "pose_ids"
+      if param[0] == "pose_ids"
         param[1].each_with_index do |pose_id, i|
           if pose_id != ""
             @sequence_array[i] = Pose.find(pose_id.to_i)
           end
         end
-      elsif param == "poses_attributes"
-        params[:sequence][:poses_attributes].each.with_index do |pose, i|
+      elsif param[0] == "poses_attributes"
+        param[1].each.with_index do |pose, i|
           if pose[1].values.first == "" || pose[1].values.last == ""
           else
             @pose = Pose.create(:name => pose[1].values.first)
-            @pose.description = pose[1].values.last
+            @pose.update(:description => pose[1].values.last)
             @sequence_array[i] = @pose
           end
         end
