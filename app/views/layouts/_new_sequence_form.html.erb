@@ -22,6 +22,9 @@
       <%= pose_builder.text_field :description %><br />
   <% end %>
   <br />
+  <%= f.label :repititions %>
+  <%= f.select :repititions, options_for_select(1..10), :prompt => 'Select number of repitions' %>
+  <br />
   <br />
   <%= f.submit %>
 <% end %>
