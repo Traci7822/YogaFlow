@@ -18,26 +18,31 @@ class SequencesController < ApplicationController
   end
 
   def create
-    @sequence = Sequence.new
-    @sequence.title = params[:sequence][:title]
+    @sequence = Sequence.create(sequence_params)
     @sequence_array = []
-    params[:sequence][:pose_ids].each_with_index do |pose_id, i|
-      if pose_id != ""
-        @sequence_array[i] = Pose.find(pose_id.to_i)
-      end
-    end
-    params[:sequence][:poses_attributes].each.with_index do |pose, i|
-      if pose[1].values.first == "" || pose[1].values.last == ""
-      else
-        @pose = Pose.create(:name => pose[1].values.first)
-        if !@pose.description
-          @pose.description = pose[1].values.last
-          @pose.save
+
+    params[:sequence].each do |param|
+      if param == "pose_ids"
+        param[1].each_with_index do |pose_id, i|
+          if pose_id != ""
+            @sequence_array[i] = Pose.find(pose_id.to_i)
+          end
         end
-        @sequence_array[i] = @pose
+      elsif param == "poses_attributes"
+        params[:sequence][:poses_attributes].each.with_index do |pose, i|
+          if pose[1].values.first == "" || pose[1].values.last == ""
+          else
+            @pose = Pose.create(:name => pose[1].values.first)
+            @pose.description = pose[1].values.last
+            @sequence_array[i] = @pose
+          end
+        end
       end
     end
-    @sequence.poses = @sequence_array
+
+    @sequence.update(
+      :number_of_poses => @sequence_array.count,
+      :poses => @sequence_array)
     @sequence.save
     redirect_to sequences_path
   end
