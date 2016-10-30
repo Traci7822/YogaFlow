@@ -39,7 +39,6 @@ class SequencesController < ApplicationController
         end
       end
     end
-
     @sequence.update(
       :number_of_poses => @sequence_array.count,
       :poses => @sequence_array)
@@ -54,7 +53,7 @@ class SequencesController < ApplicationController
   private
 
   def sequence_params
-    params.require(:sequence).permit(:title, :difficulty, :pose_ids, poses_attributes: [:name, :description, :pose_ids])
+    params.require(:sequence).permit(:title, :difficulty, :repititions, :pose_ids, poses_attributes: [:name, :description, :pose_ids])
   end
 
 end
