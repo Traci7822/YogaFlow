@@ -10,8 +10,7 @@
 
   <h2>
     <% @sequence.poses.each do |pose| %>
-      <%= pose.name %>
-      <%= pose.description %>
+      <h3><%= pose.name %> - <%= pose.description %></h3>
     <% end %>
   </h2>
 </div>

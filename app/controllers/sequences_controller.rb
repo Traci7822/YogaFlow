@@ -20,29 +20,29 @@ class SequencesController < ApplicationController
   def create
     @sequence = Sequence.new
     @sequence.title = params[:sequence][:title]
-    params[:sequence][:pose_ids].each do |pose_id|
+    @sequence_array = []
+    params[:sequence][:pose_ids].each_with_index do |pose_id, i|
       if pose_id != ""
-        @sequence.poses << Pose.find(pose_id.to_i)
+        @sequence_array[i] = Pose.find(pose_id.to_i)
       end
     end
-    params[:sequence][:poses_attributes].each do |pose|
+    params[:sequence][:poses_attributes].each.with_index do |pose, i|
       if pose[1].values.first == "" || pose[1].values.last == ""
       else
-        @pose = Pose.find_or_create_by(:name => pose[1].values.first)
-
+        @pose = Pose.create(:name => pose[1].values.first)
         if !@pose.description
           @pose.description = pose[1].values.last
+          @pose.save
         end
-        @sequence.poses << @pose
+        @sequence_array[i] = @pose
       end
     end
-    binding.pry
-    #need to create post instance properly and save @sequence
+    @sequence.poses = @sequence_array
+    @sequence.save
     redirect_to sequences_path
   end
 
   def show
-    binding.pry
     @sequence = Sequence.find(params[:id])
   end
 

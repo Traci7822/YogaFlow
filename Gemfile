@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-oauth2', '~> 1.1'
 gem 'omniauth-github'
-gem 'omniauth'
+gem 'omniauth', '~> 1.0'
 gem 'bcrypt'
 gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
