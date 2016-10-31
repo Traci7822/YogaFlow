@@ -6,9 +6,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      #redirecting to login, have it log in and redirect to index
       redirect_to root_path, :notice => "You've successfully signed up!"
-    end
+    else
       render "sessions/new"
+    end
   end
 
   def show

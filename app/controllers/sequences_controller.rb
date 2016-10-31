@@ -20,7 +20,7 @@ class SequencesController < ApplicationController
   def create
     @sequence = Sequence.create(sequence_params)
     @sequence_array = []
-
+    binding.pry
     params[:sequence].each do |param|
       if param[0] == "pose_ids"
         param[1].each_with_index do |pose_id, i|
@@ -53,7 +53,7 @@ class SequencesController < ApplicationController
 
   def update
     @sequence = Sequence.find(params[:id])
-    #add new poses to sequence
+    #add new poses and updates to sequence
     redirect_to sequence_poses_path(@sequence)
   end
 

@@ -1,8 +1,8 @@
 Issues:
   -omniauth
-  -user submittable attribute
+  -user submittable attribute (# of repetitions, how/where do i set this to sequence_poses table?)
   -active record scope method
-  -remove text from edit form & show when there's no poses
+  -remove text from edit form & show fields when there's no @sequence.poses
   -refactor sequences#create
 
 

@@ -6,6 +6,8 @@
       <%= pose_builder.label :description %>
       <%= pose_builder.text_field :description %><br />
   <% end %>
+  <%= f.label :repititions %>
+  <%= f.select :repititions, options_for_select(1..10), :prompt => 'Select number of repitions' %>
 
   <h1>or Add new poses</h1>
   <%= f.fields_for :poses do |pose_builder| %>

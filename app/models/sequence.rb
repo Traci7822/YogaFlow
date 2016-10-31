@@ -5,7 +5,13 @@ class Sequence < ActiveRecord::Base
   validates :title, presence: true
   validates :title, uniqueness: true
 
-  def poses_attributes=(poses_attributes)
+
+  def set_poses(params)
+    #poses_attributes
+    #set_pose_ids
+  end
+
+  def poses_attributes=(poses_attributes, arr)
     poses_attributes.each do |i, pose_attributes|
       self.poses.build(pose_attributes)
     end

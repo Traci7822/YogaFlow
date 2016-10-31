@@ -11,4 +11,5 @@ class PosesController < ApplicationController
     @sequence = Sequence.find(params[:sequence_id])
     @poses = Pose.all
   end
+
 end
