@@ -1,7 +1,5 @@
 Issues:
   -omniauth
-  -user submittable attribute (# of repetitions, how/where do i set this to sequence_poses table?)
-    -add comments to sequences from users
   -active record scope method
     -hardest_sequence
   -remove text from edit form & show fields when there's no @sequence.poses

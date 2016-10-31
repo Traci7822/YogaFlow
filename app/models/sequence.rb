@@ -7,8 +7,9 @@ class Sequence < ActiveRecord::Base
   validates :title, uniqueness: true
 
 
-  def self.hardest_sequence
-
+  def self.most_poses
+    most_poses = Sequence.maximum("number_of_poses")
+    Sequence.where(:number_of_poses => most_poses)
   end
 
   def set_poses(params)

@@ -3,6 +3,7 @@ class SequencesController < ApplicationController
     @sequences = Sequence.all
     @poses = Pose.all
     @users = User.all
+    @longest_sequence = Sequence.most_poses.first
   end
 
   def new
