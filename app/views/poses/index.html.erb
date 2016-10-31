@@ -27,7 +27,9 @@
 
   <br />
   <% @sequence.comments.each do |f| %>
-  <h4><%= current_user.username %> says: <%= f.content %></h4>
-  <h5><%= f.created_at %></h5>
+    <% if f.content != nil %>
+      <h4><%= f.user.username %> says: <%= f.content %></h4>
+      <h5><%= f.created_at %></h5>
+    <% end %>
   <% end %>
 </div>

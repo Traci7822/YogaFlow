@@ -17,7 +17,7 @@ class Sequence < ActiveRecord::Base
     #set_pose_ids
   end
 
-  def poses_attributes=(poses_attributes, arr)
+  def poses_attributes=(poses_attributes)
     poses_attributes.each do |i, pose_attributes|
       self.poses.build(pose_attributes)
     end

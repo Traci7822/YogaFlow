@@ -6,11 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 sequence_list = [
-  ["Good Evening Flow", 8, "relaxation", 1],
-  ["Surya Namaskar A", 10, "sun-salutations", 2],
-  ["Standing Balance", 10, "balance", 3],
-  ["Half Mandala Surrencer", 16, "relaxation", 3],
-  ["Energizing Solar Sequence", 8, "circulation", 2]
+  ["Good Evening Flow", 0, "relaxation", 1],
+  ["Surya Namaskar A", 0, "sun-salutations", 2],
+  ["Standing Balance", 0, "balance", 3],
+  ["Half Mandala Surrencer", 0, "relaxation", 3],
+  ["Energizing Solar Sequence", 0, "circulation", 2]
 ]
 
 sequence_list.each do |title, number_of_poses, focus, difficulty|
