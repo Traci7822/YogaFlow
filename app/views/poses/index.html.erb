@@ -17,7 +17,11 @@
   <%= link_to "Edit or add poses to the sequence", new_sequence_pose_path(@sequence) %>
 </div>
 
-
+<br />
 <div class="comments" align="center">
-  
+  <%= form_for ([@sequence, @sequence.comments.build]) do |f| %>
+    <%= f.label :content, "Leave a commment" %><br /><br />
+    <%= f.text_area :content %><br />
+    <%= f.submit %>
+  <% end %>
 </div>
