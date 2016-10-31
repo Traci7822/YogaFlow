@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :sequences
   has_many :poses, through: :sequences
+  has_many :comments
 
   validates_confirmation_of :password
   validates_presence_of :username

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   root to: 'sequences#index'
 
   get 'sign_up', to: 'users#new', as: 'sign_up'
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :sequences do
     resources :poses
+    resources :comments
   end
 
   resources :poses

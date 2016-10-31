@@ -20,7 +20,8 @@ class SequencesController < ApplicationController
   def create
     @sequence = Sequence.create(sequence_params)
     @sequence_array = []
-    binding.pry
+#move following into sequence model
+    @sequence.set_poses(params[:sequence])
     params[:sequence].each do |param|
       if param[0] == "pose_ids"
         param[1].each_with_index do |pose_id, i|
