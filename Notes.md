@@ -1,3 +1,11 @@
+Issues:
+  -omniauth
+  -user submittable attribute
+  -active record scope method
+  -remove text from edit form & show when there's no poses
+  -refactor sequences#create
+
+
 Models:
   User
     has_many :sequences

@@ -1,9 +1,14 @@
 class PosesController < ApplicationController
-  def new
-    binding.pry
+  def index
+    @sequence = Sequence.find(params[:sequence_id])
   end
 
-  def create
-    binding.pry
+  def show
+    @sequence = Sequence.find(params[:sequence_id])
+  end
+
+  def new
+    @sequence = Sequence.find(params[:sequence_id])
+    @poses = Pose.all
   end
 end

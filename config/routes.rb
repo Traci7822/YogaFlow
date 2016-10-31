@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   #get 'auth/github', :as => 'github_auth'
   get '/auth/github/callback' => 'sessions#github'
 
-
   resources :sequences do
     resources :poses
   end

@@ -48,6 +48,13 @@ class SequencesController < ApplicationController
 
   def show
     @sequence = Sequence.find(params[:id])
+    redirect_to sequence_poses_path(@sequence)
+  end
+
+  def update
+    @sequence = Sequence.find(params[:id])
+    #add new poses to sequence
+    redirect_to sequence_poses_path(@sequence)
   end
 
   private
