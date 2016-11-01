@@ -32,6 +32,7 @@ class SequencesController < ApplicationController
 
   def edit
     @sequence = Sequence.find(params[:id])
+    @poses = Pose.all
   end
 
   def update

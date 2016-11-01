@@ -1,0 +1,14 @@
+<%= form_for @sequence do |f| %>
+  <% 10.times do %>
+  <%= f.fields_for @sequence.poses.build do |pose_builder| %>
+      <%= f.label :add_pose_to_this_sequence %>
+      <%= select_tag 'sequence[pose_ids][]', options_from_collection_for_select(@poses, "id", "name"), { :prompt => 'Select a pose'} %>
+      or create a new pose:
+      <%= pose_builder.label :name %>
+      <%= pose_builder.text_field :name %>
+      <%= pose_builder.label :description %>
+      <%= pose_builder.text_field :description %><br />
+  <% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

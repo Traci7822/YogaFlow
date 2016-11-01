@@ -6,7 +6,6 @@ class Sequence < ActiveRecord::Base
   validates :title, presence: true
   validates :title, uniqueness: true
 
-
   def self.most_poses
     most_poses = Sequence.maximum("number_of_poses")
     Sequence.where(:number_of_poses => most_poses)
