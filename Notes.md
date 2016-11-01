@@ -2,8 +2,6 @@ Issues:
   -omniauth
   -remove text from edit form & show fields when there's no @sequence.poses
     -edit_sequence_path, create blank fields then use form_for
-  -refactor sequences#create
-    -move functionality to model
 
 
 Models:

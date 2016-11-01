@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_many :poses, through: :sequences
   has_many :comments
 
-  validates_confirmation_of :password
   validates_presence_of :username
   validates_uniqueness_of :username
 
@@ -12,7 +11,7 @@ class User < ActiveRecord::Base
     create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
-      user.name = auth["info"]["name"]
+      user.username = auth["info"]["name"]
     end
   end
 end
