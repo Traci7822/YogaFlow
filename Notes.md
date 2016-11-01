@@ -3,7 +3,6 @@ Issues:
   -remove text from edit form & show fields when there's no @sequence.poses
     -edit_sequence_path, create blank fields then use form_for
 
-
 Models:
   User
     has_many :sequences

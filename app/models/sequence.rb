@@ -5,7 +5,7 @@ class Sequence < ActiveRecord::Base
   belongs_to :user
   validates :title, presence: true
   validates :title, uniqueness: true
-
+  before_save :repeated
 
   def self.most_poses
     most_poses = Sequence.maximum("number_of_poses")
@@ -48,5 +48,18 @@ class Sequence < ActiveRecord::Base
         self.poses.build(pose_attributes)
     end
   end
+
+  private
+
+    def repeated
+      self.poses.each do |pose|
+        pose_count = self.poses.where(:name => pose.name).count
+        if pose_count > 1
+          @pose = sequence_poses.find_by(:pose_id => pose.id)
+          @pose.update(:repeated => true)
+          @pose.save
+        end
+      end
+    end
 
 end
