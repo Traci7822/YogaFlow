@@ -3,6 +3,11 @@ class SessionsController < ApplicationController
     @user = User.new
   end
 
+  def create_with_github
+    use = User.create_with_omniauth(request.env["omniauth.auth"])
+    binding.pry
+  end
+
   def create
     user = User.find_or_create_by(username: params[:username])
     if user

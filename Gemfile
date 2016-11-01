@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'figaro'
 gem 'omniauth-oauth2', '~> 1.1'
 gem 'omniauth-github'
 gem 'omniauth', '~> 1.0'

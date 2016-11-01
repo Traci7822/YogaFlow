@@ -20,30 +20,7 @@ class SequencesController < ApplicationController
 
   def create
     @sequence = Sequence.create(sequence_params)
-    @sequence_array = []
-#move following into sequence model
     @sequence.set_poses(params[:sequence])
-    params[:sequence].each do |param|
-      if param[0] == "pose_ids"
-        param[1].each_with_index do |pose_id, i|
-          if pose_id != ""
-            @sequence_array[i] = Pose.find(pose_id.to_i)
-          end
-        end
-      elsif param[0] == "poses_attributes"
-        param[1].each.with_index do |pose, i|
-          if pose[1].values.first == "" || pose[1].values.last == ""
-          else
-            @pose = Pose.create(:name => pose[1].values.first)
-            @pose.update(:description => pose[1].values.last)
-            @sequence_array[i] = @pose
-          end
-        end
-      end
-    end
-    @sequence.update(
-      :number_of_poses => @sequence_array.count,
-      :poses => @sequence_array)
     @sequence.save
     redirect_to sequences_path
   end
