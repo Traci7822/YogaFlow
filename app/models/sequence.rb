@@ -53,7 +53,10 @@ class Sequence < ActiveRecord::Base
 
   def poses_attributes=(poses_attributes)
     poses_attributes.each do |i, pose_attributes|
+      if pose_attributes.values.first == "" || pose_attributes.values.last == ""
+      else
         self.poses.build(pose_attributes)
+      end
     end
   end
 
