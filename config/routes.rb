@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
   #get 'auth/github', :as => 'github_auth'
   get '/auth/github/callback' => 'sessions#create_with_github'
+  post '/sequences/:id', to: 'sequences#update'
 
   resources :sequences do
     resources :poses

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.username = auth["info"]["name"]
+      #generate random password
     end
   end
 end

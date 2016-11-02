@@ -4,12 +4,13 @@ class SequencesController < ApplicationController
   def index
     @sequences = Sequence.all
     @users = User.all
-    @longest_sequence = Sequence.most_poses.first
+    @longest_sequence = Sequence.most_poses.first #change to a helper method?
   end
 
   def new
     if current_user
       @sequence = Sequence.new
+
       15.times do
         @sequence.poses.build
       end
@@ -35,10 +36,13 @@ class SequencesController < ApplicationController
 
   def edit
     set_sequence
+    @sequence2 = Sequence.new
+    15.times do
+      @sequence2.poses.build
+    end
   end
 
   def update
-    #need to pass pose_attributes of new poses - fix form
     set_sequence
     @sequence.update(:repititions => sequence_params[:repititions])
     @sequence.poses << @sequence.set_poses(params[:sequence])
