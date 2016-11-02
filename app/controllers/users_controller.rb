@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include Sessionable
+
   def new
     @user = User.new
   end
@@ -6,10 +8,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #redirecting to login, have it log in and redirect to index
-      redirect_to root_path, :notice => "You've successfully signed up!"
+      set_session
+      redirect_to root_path
+    elsif
+      User.find_by(username: @user.username)
+      @user.errors.add(:user, "already exists, please log in")
+      redirect_to log_in_path
     else
-      render "sessions/new"
+      @user = User.new
+      @user.errors[:signup] << "fields can not be blank"
+      render :new
     end
   end
 

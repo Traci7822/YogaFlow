@@ -4,16 +4,18 @@
 <%= form_for @user do |f| %>
 
   <% if @user.errors.any? %>
-    <div class="fields_with_errors">
+    <div class="error_explanation">
       <ul>
-        <% for message in @user.errors.full_messages %>
+        <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+  <div class="field_with_errors">
   <%= f.label :username %><br />
   <%= f.text_field :username %><br />
+</div>
   <%= f.label :password %><br />
   <%= f.password_field :password %><br /><br />
   <%= f.submit %>
