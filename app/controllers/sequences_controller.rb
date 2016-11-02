@@ -41,8 +41,9 @@ class SequencesController < ApplicationController
   end
 
   def update
-    binding.pry
     @sequence = Sequence.find(params[:id])
+    #set it so @sequence_array pushes to end of @sequence.pose
+    @sequence.set_poses(params[:sequence])
     #add new poses and updates to sequence
     redirect_to sequence_poses_path(@sequence)
   end

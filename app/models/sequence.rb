@@ -23,6 +23,7 @@ class Sequence < ActiveRecord::Base
         set_new_pose_ids(attribute[1])
       end
     end
+    #move these to sequence controller private method so update can push @sequence_array onto @sequence.poses
     self.poses = @sequence_array
     self.number_of_poses = self.poses.count
   end
