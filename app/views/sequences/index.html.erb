@@ -1,7 +1,8 @@
 <% if current_user %>
   <h1>Please select a yoga sequence:</h1>
-
-<h3>The sequence with the most poses is "<%= @longest_sequence.title %>"</h3>
+<% if @longest_sequence %>
+  <h3>The sequence with the most poses is "<%= @longest_sequence.title %>"</h3>
+<% end %>
   <% @sequences.each do |sequence| %>
     <h3><h2><%= link_to sequence.title, sequence_path(sequence) %></h2>
 

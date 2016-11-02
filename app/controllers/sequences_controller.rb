@@ -42,6 +42,7 @@ class SequencesController < ApplicationController
   def update
     #need to pass pose_attributes of new poses - fix form
     @sequence = Sequence.find(params[:id])
+    @sequence.update(:repititions => sequence_params[:repititions])
     @sequence.poses << @sequence.set_poses(params[:sequence])
     redirect_to sequence_poses_path(@sequence)
   end

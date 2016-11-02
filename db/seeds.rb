@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 sequence_list = [
-  ["Good Evening Flow", 0, "relaxation", 1],
-  ["Surya Namaskar A", 0, "sun-salutations", 2],
-  ["Standing Balance", 0, "balance", 3],
-  ["Half Mandala Surrencer", 0, "relaxation", 3],
-  ["Energizing Solar Sequence", 0, "circulation", 2]
+  ["Suryanamaskara A", 3],
+  ["Surya Namaskar A", 2],
+  ["Standing Balance", 3],
+  ["Half Mandala Surrencer", 3],
+  ["Energizing Solar Sequence", 2]
 ]
 
-sequence_list.each do |title, number_of_poses, focus, difficulty|
-  Sequence.create(title: title, number_of_poses: number_of_poses, focus: focus, difficulty: difficulty)
+sequence_list.each do |title, difficulty|
+  Sequence.create(title: title, difficulty: difficulty)
 end
 
 pose_list = [
@@ -23,7 +23,18 @@ pose_list = [
   ["Ardha Uttanasana", "Half Standing Forward Fold"],
   ["Chaturanga Dandasana", "Low Plank"],
   ["Eka Pada Tadasana", "One-Legged Mountain"],
-  ["Ardha Matsyendrasana", "Half Lord of the Fishes"]
+  ["Ardha Matsyendrasana", "Half Lord of the Fishes"],
+  ["Bakasana", "Crow"],
+  ["Astavakrasana", "Eight-Angle"],
+  ["Garudasana", "Eagle"],
+  ["Utthita Hasta Padangustasana", "Extended Hand-To-Big-Toe"],
+  ["Ardha Chandrasana", "Half Moon"],
+  ["Adho Mukha Vrksasana", "Handstand"],
+  ["Vasisthasana", "Side Plank"],
+  ["Salamba Sirsasana", "Supported Headstand"],
+  ["Salmba Sarvangasana", "Supported Shoulderstand"],
+  ["Vrksasana", "Tree"],
+  ["Virachadrasana III", "Warrior III"]
 ]
 
 pose_list.each do |name, description|

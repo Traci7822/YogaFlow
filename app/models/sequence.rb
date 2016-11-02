@@ -15,9 +15,9 @@ class Sequence < ActiveRecord::Base
   end
 
   def set_new_sequence_poses(params)
-    self.set_poses(params)
-    self.update_pose_array
-    self.update_number_of_poses
+    set_poses(params)
+    update_pose_array
+    update_number_of_poses
     self.save
   end
 
@@ -33,13 +33,6 @@ class Sequence < ActiveRecord::Base
     @sequence_array
   end
 
-  def update_pose_array
-    self.poses = @sequence_array
-  end
-
-  def update_number_of_poses
-    self.number_of_poses = self.poses.count
-  end
 
   def set_pose_ids(attribute)
     attribute.each_with_index do |pose_id, i|
@@ -65,17 +58,25 @@ class Sequence < ActiveRecord::Base
     end
   end
 
-  private
+private
 
-    def repeated
-      self.poses.each do |pose|
-        pose_count = self.poses.where(:name => pose.name).count
-        if pose_count > 1
-          @pose = sequence_poses.find_by(:pose_id => pose.id)
-          @pose.update(:repeated => true)
-          @pose.save
-        end
+  def repeated
+    self.poses.each do |pose|
+      pose_count = self.poses.where(:name => pose.name).count
+      if pose_count > 1
+        @pose = sequence_poses.find_by(:pose_id => pose.id)
+        @pose.update(:repeated => true)
+        @pose.save
       end
     end
+  end
+
+  def update_pose_array
+    self.poses = @sequence_array
+  end
+
+  def update_number_of_poses
+    self.number_of_poses = self.poses.count
+  end
 
 end
