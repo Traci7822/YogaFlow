@@ -14,6 +14,13 @@ class Sequence < ActiveRecord::Base
     Sequence.where(:number_of_poses => most_poses)
   end
 
+  def set_new_sequence_poses(params)
+    self.set_poses(params)
+    self.update_pose_array
+    self.update_number_of_poses
+    self.save
+  end
+
   def set_poses(params)
     @sequence_array = []
     params.each do |attribute|
@@ -23,8 +30,14 @@ class Sequence < ActiveRecord::Base
         set_new_pose_ids(attribute[1])
       end
     end
-    #move these to sequence controller private method so update can push @sequence_array onto @sequence.poses
+    @sequence_array
+  end
+
+  def update_pose_array
     self.poses = @sequence_array
+  end
+
+  def update_number_of_poses
     self.number_of_poses = self.poses.count
   end
 

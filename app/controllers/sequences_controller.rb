@@ -21,8 +21,7 @@ class SequencesController < ApplicationController
   def create
     @sequence = Sequence.create(sequence_params)
     if @sequence.valid?
-      @sequence.set_poses(params[:sequence])
-      @sequence.save
+      @sequence.set_new_sequence_poses(params[:sequence])
       redirect_to sequences_path
     else
       @poses = Pose.all
@@ -41,10 +40,9 @@ class SequencesController < ApplicationController
   end
 
   def update
+    #need to pass pose_attributes of new poses - fix form
     @sequence = Sequence.find(params[:id])
-    #set it so @sequence_array pushes to end of @sequence.pose
-    @sequence.set_poses(params[:sequence])
-    #add new poses and updates to sequence
+    @sequence.poses << @sequence.set_poses(params[:sequence])
     redirect_to sequence_poses_path(@sequence)
   end
 
