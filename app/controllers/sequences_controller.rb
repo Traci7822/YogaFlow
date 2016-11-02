@@ -20,9 +20,14 @@ class SequencesController < ApplicationController
 
   def create
     @sequence = Sequence.create(sequence_params)
-    @sequence.set_poses(params[:sequence])
-    @sequence.save
-    redirect_to sequences_path
+    if @sequence.valid?
+      @sequence.set_poses(params[:sequence])
+      @sequence.save
+      redirect_to sequences_path
+    else
+      @poses = Pose.all
+      render :new
+    end
   end
 
   def show

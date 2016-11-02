@@ -5,6 +5,8 @@ class Sequence < ActiveRecord::Base
   belongs_to :user
   validates :title, presence: true
   validates :title, uniqueness: true
+  validates :difficulty, presence: true
+  validates :repititions, presence: true
   before_save :repeated
 
   def self.most_poses
@@ -57,7 +59,7 @@ class Sequence < ActiveRecord::Base
         if pose_count > 1
           @pose = sequence_poses.find_by(:pose_id => pose.id)
           @pose.update(:repeated => true)
-          @pose.save    
+          @pose.save
         end
       end
     end

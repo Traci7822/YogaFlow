@@ -12,8 +12,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     elsif
       User.find_by(username: @user.username)
-      @user.errors.add(:user, "already exists, please log in")
-      redirect_to log_in_path
+      render :new
     else
       @user = User.new
       @user.errors[:signup] << "fields can not be blank"
