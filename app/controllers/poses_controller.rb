@@ -1,15 +1,19 @@
 class PosesController < ApplicationController
+  before_action :find_sequence
+
   def index
-    @sequence = Sequence.find(params[:sequence_id])
   end
 
   def show
-    @sequence = Sequence.find(params[:sequence_id])
   end
 
   def new
-    @sequence = Sequence.find(params[:sequence_id])
     @poses = Pose.all
   end
 
+private
+
+  def find_sequence
+    @sequence = Sequence.find(params[:sequence_id])
+  end
 end

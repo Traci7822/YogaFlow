@@ -33,7 +33,6 @@ class Sequence < ActiveRecord::Base
     @sequence_array
   end
 
-
   def set_pose_ids(attribute)
     attribute.each_with_index do |pose_id, i|
       if pose_id != ""

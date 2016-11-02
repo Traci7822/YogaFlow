@@ -1,7 +1,8 @@
 class SequencesController < ApplicationController
+  before_action :set_poses
+
   def index
     @sequences = Sequence.all
-    @poses = Pose.all
     @users = User.all
     @longest_sequence = Sequence.most_poses.first
   end
@@ -12,7 +13,6 @@ class SequencesController < ApplicationController
       15.times do
         @sequence.poses.build
       end
-      @poses = Pose.all
     else
       redirect_to log_in_path
     end
@@ -24,30 +24,36 @@ class SequencesController < ApplicationController
       @sequence.set_new_sequence_poses(params[:sequence])
       redirect_to sequences_path
     else
-      @poses = Pose.all
       render :new
     end
   end
 
   def show
-    @sequence = Sequence.find(params[:id])
+    set_sequence
     redirect_to sequence_poses_path(@sequence)
   end
 
   def edit
-    @sequence = Sequence.find(params[:id])
-    @poses = Pose.all
+    set_sequence
   end
 
   def update
     #need to pass pose_attributes of new poses - fix form
-    @sequence = Sequence.find(params[:id])
+    set_sequence
     @sequence.update(:repititions => sequence_params[:repititions])
     @sequence.poses << @sequence.set_poses(params[:sequence])
     redirect_to sequence_poses_path(@sequence)
   end
 
   private
+
+  def set_poses
+    @poses = Pose.all
+  end
+
+  def set_sequence
+    @sequence = Sequence.find(params[:id])
+  end
 
   def sequence_params
     params.require(:sequence).permit(:title, :difficulty, :repititions, :pose_ids, poses_attributes: [:name, :description, :pose_ids])
