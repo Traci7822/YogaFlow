@@ -4,13 +4,11 @@ class SequencesController < ApplicationController
   def index
     @sequences = Sequence.all
     @users = User.all
-    @longest_sequence = Sequence.most_poses.first #change to a helper method?
   end
 
   def new
     if current_user
       @sequence = Sequence.new
-
       15.times do
         @sequence.poses.build
       end
