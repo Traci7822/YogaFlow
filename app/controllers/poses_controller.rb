@@ -8,7 +8,15 @@ class PosesController < ApplicationController
   end
 
   def new
+    @sequence = Sequence.find(params[:sequence_id])
     @poses = Pose.all
+    15.times do
+      @pose = @sequence.poses.build
+    end
+  end
+
+  def update
+    binding.pry
   end
 
 private

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   #get 'auth/github', :as => 'github_auth'
   get '/auth/github/callback' => 'sessions#create_with_github'
   post '/sequences/:id', to: 'sequences#update'
+  patch '/sequences/:sequence_id/poses/:id', to: 'sequences#update'
 
   resources :sequences do
     resources :poses
