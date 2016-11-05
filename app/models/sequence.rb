@@ -28,6 +28,8 @@ class Sequence < ActiveRecord::Base
         set_pose_ids(attribute[1])
       elsif attribute[0] == "poses_attributes"
         set_new_pose_ids(attribute[1])
+      elsif attribute[0] == "pose"
+        set_new_pose_ids(attribute[1])
       end
     end
     @sequence_array
@@ -43,10 +45,17 @@ class Sequence < ActiveRecord::Base
 
   def set_new_pose_ids(attribute)
     attribute.each.with_index do |pose, i|
-      if pose[1].values.first == "" || pose[1].values.last == ""
+      if pose.kind_of?(Hash)
+        if pose[1].values.first == "" || pose[1].values.last == ""
+        else
+          @pose = Pose.create(:name => pose[1].values.first, :description => pose[1].values.last)
+          @sequence_array[i] = @pose
+        end
       else
-        @pose = Pose.create(:name => pose[1].values.first, :description => pose[1].values.last)
-        @sequence_array[i] = @pose
+        if pose[0] && pose[1]
+          @pose = Pose.create(:name => pose[0], :description => pose[1])
+          @sequence_array[i] = @pose
+        end
       end
     end
   end

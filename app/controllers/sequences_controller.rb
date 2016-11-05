@@ -37,7 +37,6 @@ class SequencesController < ApplicationController
   end
 
   def update
-    binding.pry
     set_sequence
     @sequence.update(:repititions => sequence_params[:repititions])
     @sequence.poses << @sequence.set_poses(params[:sequence])
