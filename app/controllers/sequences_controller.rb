@@ -34,13 +34,10 @@ class SequencesController < ApplicationController
 
   def edit
     set_sequence
-    @sequence2 = Sequence.new
-    15.times do
-      @sequence2.poses.build
-    end
   end
 
   def update
+    binding.pry
     set_sequence
     @sequence.update(:repititions => sequence_params[:repititions])
     @sequence.poses << @sequence.set_poses(params[:sequence])
