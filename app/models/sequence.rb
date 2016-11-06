@@ -24,17 +24,15 @@ class Sequence < ActiveRecord::Base
   def set_poses(params)
     @sequence_array = []
     params.each do |attribute|
-      binding.pry
       if attribute[0] == "pose_ids"
         set_pose_ids(attribute[1])
       elsif attribute[0] == "poses_attributes"
         set_new_pose_ids(attribute[1])
+        #description is being saved as a #, not sure why
       elsif attribute[0] == "pose" && attribute[1].values.first != "" && attribute[1].values.last != ""
         set_new_sequence_pose_ids(attribute[1])
       end
-      #sequence array only has real instances at this point
     end
-    #adds blank instance to array at this point
     @sequence_array
   end
 
@@ -48,12 +46,10 @@ class Sequence < ActiveRecord::Base
 
   def set_new_pose_ids(attribute)
     attribute.each.with_index do |pose, i|
-      if pose.kind_of?(Hash)
-        if pose[1].values.first == "" || pose[1].values.last == ""
-        else
-          @pose = Pose.create(:name => pose[1].values.first, :description => pose[1].values.last)
-          @sequence_array[i] = @pose
-        end
+      if pose[1].values[0] == "" || pose[1].values[1] == ""
+      else
+        @pose = Pose.create(:name => pose[1].values[0], :description => pose[1].values[1])
+        @sequence_array[i] = @pose
       end
     end
   end
