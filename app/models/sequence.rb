@@ -47,7 +47,11 @@ class Sequence < ActiveRecord::Base
     attribute.each.with_index do |pose, i|
       if pose[1].values[0] == "" || pose[1].values[1] == ""
       else
-        @pose = Pose.create(:name => pose[1].values[0], :description => pose[1].values[1])
+        @pose = Pose.find_or_create_by(name: pose[1].values[0])
+        if @pose.description == nil
+          @pose.description = pose[1].values[1]
+          @pose.save
+        end
         @sequence_array[i] = @pose
       end
     end
@@ -55,7 +59,11 @@ class Sequence < ActiveRecord::Base
 
   def set_new_sequence_pose_ids(attribute)
     if attribute.values.first && attribute.values.last
-      @pose = Pose.create(:name => attribute.values.first, :description => attribute.values.last)
+      @pose = Pose.find_or_create_bycreate(:name => attribute.values.first)
+      if @pose.description == nil
+        @pose.description = attribute.values.last
+        @pose.save
+      end
       @sequence_array << @pose
     end
   end

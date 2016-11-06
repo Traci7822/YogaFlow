@@ -2,7 +2,7 @@ class PosesController < ApplicationController
   before_action :find_sequence
 
   def index
-    find_sequence
+    #editing a pose moves that pose to end of @sequence.poses
   end
 
   def show
@@ -16,7 +16,6 @@ class PosesController < ApplicationController
   end
 
   def create
-    binding.pry
   end
 
   def update

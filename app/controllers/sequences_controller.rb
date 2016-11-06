@@ -39,7 +39,6 @@ class SequencesController < ApplicationController
   def update
     set_sequence
     @sequence.update(:repititions => sequence_params[:repititions])
-    binding.pry
     @sequence.poses = @sequence.set_poses(params[:sequence])
     redirect_to sequence_poses_path(@sequence)
   end
@@ -52,14 +51,14 @@ class SequencesController < ApplicationController
 
   private
 
+  def set_poses
+    @poses = Pose.all
+  end
+
   def pose_builder
     15.times do
       @sequence.poses.build
     end
-  end
-
-  def set_poses
-    @poses = Pose.all
   end
 
   def set_sequence

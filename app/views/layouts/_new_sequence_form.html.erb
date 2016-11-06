@@ -20,7 +20,7 @@
   <div class="pose_builder fields_with_errors">
     <%= f.fields_for :poses do |pose_builder| %>
         <%= f.label :add_pose_to_this_sequence %>
-        <%= select_tag 'sequence[pose_ids][]', options_from_collection_for_select(@poses.order('name ASC'), "id", "name"), {:prompt => 'Select a pose'} %>
+        <%= select_tag 'sequence[pose_ids][]', options_from_collection_for_select(@poses, "id", "name"), {:prompt => 'Select a pose'} %>
         or create a new pose:
         <%= pose_builder.label :name %>
         <%= pose_builder.text_field :name %>
