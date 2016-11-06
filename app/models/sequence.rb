@@ -24,21 +24,24 @@ class Sequence < ActiveRecord::Base
   def set_poses(params)
     @sequence_array = []
     params.each do |attribute|
+      binding.pry
       if attribute[0] == "pose_ids"
         set_pose_ids(attribute[1])
       elsif attribute[0] == "poses_attributes"
         set_new_pose_ids(attribute[1])
-      elsif attribute[0] == "pose"
+      elsif attribute[0] == "pose" && attribute[1].values.first != "" && attribute[1].values.last != ""
         set_new_sequence_pose_ids(attribute[1])
       end
+      #sequence array only has real instances at this point
     end
+    #adds blank instance to array at this point
     @sequence_array
   end
 
   def set_pose_ids(attribute)
     attribute.each_with_index do |pose_id, i|
       if pose_id != ""
-        @sequence_array[i] = Pose.find(pose_id.to_i)
+        @sequence_array[i] = Pose.find(pose_id)
       end
     end
   end
