@@ -6,13 +6,17 @@
       <%= f.text_field :title %>
     </div>
   </h3>
+
   <br /><br />
+
     <div class="difficulty fields_with_errors">
       <h3><%= f.label :difficulty %></h3>
       <h5>1-5 scale, 1 = easiest, 5 = hardest </h5>
       <%= f.select :difficulty, options_for_select(1..5), :prompt => 'Select a level of difficulty' %>
     </div>
+
   <br /><br />
+
   <div class="pose_builder fields_with_errors">
     <%= f.fields_for :poses do |pose_builder| %>
         <%= f.label :add_pose_to_this_sequence %>
@@ -24,11 +28,15 @@
         <%= pose_builder.text_field :description %><br />
     <% end %>
   </div>
+
   <br />
+
   <div class="repititions fields_with_errors">
     <%= f.label :repititions %>
     <%= f.select :repititions, options_for_select(1..10), :prompt => 'Select number of repitions' %>
   </div>
+
   <br /><br />
+
   <%= f.submit %>
 <% end %>

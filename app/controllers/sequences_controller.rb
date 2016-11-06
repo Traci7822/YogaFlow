@@ -9,9 +9,7 @@ class SequencesController < ApplicationController
   def new
     if current_user
       @sequence = Sequence.new
-      15.times do
-        @sequence.poses.build
-      end
+      pose_builder
     else
       redirect_to log_in_path
     end
@@ -23,6 +21,8 @@ class SequencesController < ApplicationController
       @sequence.set_new_sequence_poses(params[:sequence])
       redirect_to sequences_path
     else
+      flash[:error] = @sequence.errors
+      pose_builder
       render :new
     end
   end
@@ -39,11 +39,24 @@ class SequencesController < ApplicationController
   def update
     set_sequence
     @sequence.update(:repititions => sequence_params[:repititions])
+    binding.pry
+    @sequence.poses = @sequence.set_poses(params[:sequence])
+    redirect_to sequence_poses_path(@sequence)
+  end
+
+  def add_pose
+    @sequence = Sequence.find(params[:sequence_id])
     @sequence.poses << @sequence.set_poses(params[:sequence])
     redirect_to sequence_poses_path(@sequence)
   end
 
   private
+
+  def pose_builder
+    15.times do
+      @sequence.poses.build
+    end
+  end
 
   def set_poses
     @poses = Pose.all

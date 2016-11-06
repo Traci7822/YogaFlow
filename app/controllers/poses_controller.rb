@@ -2,6 +2,7 @@ class PosesController < ApplicationController
   before_action :find_sequence
 
   def index
+    find_sequence
   end
 
   def show
@@ -9,8 +10,13 @@ class PosesController < ApplicationController
 
   def new
     @sequence = Sequence.find(params[:sequence_id])
+    @sequence2 = Sequence.new
     @poses = Pose.all
-    @pose = @sequence.poses.build
+    @pose = @sequence2.poses.build
+  end
+
+  def create
+    binding.pry
   end
 
   def update

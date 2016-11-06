@@ -28,7 +28,6 @@ class Sequence < ActiveRecord::Base
         set_pose_ids(attribute[1])
       elsif attribute[0] == "poses_attributes"
         set_new_pose_ids(attribute[1])
-        #description is being saved as a #, not sure why
       elsif attribute[0] == "pose" && attribute[1].values.first != "" && attribute[1].values.last != ""
         set_new_sequence_pose_ids(attribute[1])
       end
