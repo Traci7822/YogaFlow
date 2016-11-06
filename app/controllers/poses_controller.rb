@@ -1,5 +1,6 @@
 class PosesController < ApplicationController
   before_action :find_sequence
+  before_action :set_poses
 
   def index
     #editing a pose moves that pose to end of @sequence.poses
@@ -11,7 +12,6 @@ class PosesController < ApplicationController
   def new
     @sequence = Sequence.find(params[:sequence_id])
     @sequence2 = Sequence.new
-    @poses = Pose.all
     @pose = @sequence2.poses.build
   end
 
@@ -25,5 +25,9 @@ private
 
   def find_sequence
     @sequence = Sequence.find(params[:sequence_id])
+  end
+
+  def set_poses
+    @poses = Pose.all
   end
 end

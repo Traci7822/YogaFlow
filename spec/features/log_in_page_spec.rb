@@ -7,7 +7,7 @@ RSpec.feature "LogInPage", type: :feature do
       user = FactoryGirl.create(:user)
       fill_in 'Username', :with => user.username
       fill_in 'Password', :with => user.password
-      expect(page.has_content?("NewUser"))
+      expect(page.has_content?("TestUser"))
     end
   end
 end
