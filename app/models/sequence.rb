@@ -25,10 +25,13 @@ class Sequence < ActiveRecord::Base
     @sequence_array = []
     params.each do |attribute|
       if attribute[0] == "pose_ids"
+        #sets poses added from pre-existing pose choices
         set_pose_ids(attribute[1])
       elsif attribute[0] == "poses_attributes"
+        #sets poses created from scratch or typed in
         set_new_pose_ids(attribute[1])
       elsif attribute[0] == "pose" && attribute[1].values.first != "" && attribute[1].values.last != ""
+        #adds new poses to the sequence after creation
         set_new_sequence_pose_ids(attribute[1])
       end
     end
@@ -38,6 +41,7 @@ class Sequence < ActiveRecord::Base
   def set_pose_ids(attribute)
     attribute.each_with_index do |pose_id, i|
       if pose_id != ""
+        #adds pose if valid to the array at the index for the order it was created at
         @sequence_array[i] = Pose.find(pose_id)
       end
     end
@@ -52,6 +56,7 @@ class Sequence < ActiveRecord::Base
           @pose.description = pose[1].values[1]
           @pose.save
         end
+        #adds pose if valid to the array at the index for the order it was created at
         @sequence_array[i] = @pose
       end
     end
@@ -64,6 +69,7 @@ class Sequence < ActiveRecord::Base
         @pose.description = attribute.values.last
         @pose.save
       end
+      #adds pose to the end of the sequence
       @sequence_array << @pose
     end
   end
@@ -79,6 +85,7 @@ class Sequence < ActiveRecord::Base
 
 private
 
+  #checks to see if pose is repeated within the sequence and updates the DB
   def repeated
     self.poses.each do |pose|
       pose_count = self.poses.where(:name => pose.name).count

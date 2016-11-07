@@ -16,11 +16,14 @@ class SequencesController < ApplicationController
   end
 
   def create
+    #creates a new sequence
     @sequence = Sequence.create(sequence_params)
     if @sequence.valid?
+      #sets poses that make up the sequence
       @sequence.set_new_sequence_poses(params[:sequence])
       redirect_to sequences_path
     else
+      #renders create new sequence form with errors
       flash[:error] = @sequence.errors
       pose_builder
       render :new
@@ -39,11 +42,13 @@ class SequencesController < ApplicationController
   def update
     set_sequence
     @sequence.update(:repititions => sequence_params[:repititions])
+    #updates sequence poses from edit poses form
     @sequence.poses = @sequence.set_poses(params[:sequence])
     redirect_to sequence_poses_path(@sequence)
   end
 
   def add_pose
+    #updates sequence poses from add new pose form
     @sequence = Sequence.find(params[:sequence_id])
     @sequence.poses << @sequence.set_poses(params[:sequence])
     redirect_to sequence_poses_path(@sequence)
@@ -56,6 +61,7 @@ class SequencesController < ApplicationController
   end
 
   def pose_builder
+    #builds pose fields for new/add pose forms
     15.times do
       @sequence.poses.build
     end
