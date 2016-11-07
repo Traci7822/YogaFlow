@@ -8,10 +8,10 @@ YogaFlow is a web app to create yoga sequences full of yoga poses.
 You can add pre-existing poses, create your own, and comment on the sequences.
 ---
 [Installation]
-Clone this repository
-Run bundle install
-Start a rails server
-Visit localhost:3000 in your browswer
+1. Clone this repository
+2. Run bundle install
+3. Start a rails server
+4. Visit localhost:3000 in your browswer
 ---
 [License]
 MIT License
