@@ -3,11 +3,7 @@ class SequencesController < ApplicationController
 
   def list
     set_sequence
-    render plain: (
-      @sequence.poses.each do |pose|
-        pose
-      end
-    )
+    render json: @sequence
   end
 
   def index
