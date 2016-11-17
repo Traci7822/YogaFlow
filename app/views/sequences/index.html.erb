@@ -1,14 +1,22 @@
-<% if current_user %>
-  <h1>Please select a yoga sequence:</h1>
-<% if longest_sequence %>
-  <h3>The sequence with the most poses is "<%= longest_sequence.title %>"</h3>
-<% end %>
-  <% @sequences.each do |sequence| %>
-    <h3><h2><%= link_to sequence.title, sequence_path(sequence) %></h2>
-
+<head>
+  <% if current_user %>
+    <h1>Please select a yoga sequence:</h1>
+  <% if longest_sequence %>
+    <h3>The sequence with the most poses is "<%= longest_sequence.title %>"</h3>
   <% end %>
+</head>
 
+<body>
+  <div id="sequences">
+    <% @sequences.each do |sequence| %>
+      <h3><h2><%= link_to sequence.title, sequence_path(sequence) %></h2>
+    <% end %>
+  </div>
   <hr align="left" width="25%" />
 
   <h2><%= link_to "Create a new sequence", new_sequence_path %></h2>
-<% end %>
+
+  <% end %>
+  <script src="script.js"></script>
+</body>
+</html>

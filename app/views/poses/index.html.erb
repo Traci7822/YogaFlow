@@ -1,38 +1,46 @@
-<div class="description" align="center">
-  <h1>"<%= sequence_title %>"</h1>
-  <ul style="list-style: none;">
-    <li>Difficulty Rating: <%= @sequence.difficulty %></li>
-  </ul>
+<head>
+  <div class="description" align="center">
+    <h1>"<%= sequence_title %>"</h1>
+    <ul style="list-style: none;">
+      <li>Difficulty Rating: <%= @sequence.difficulty %></li>
+    </ul>
+  </div>
+</head>
 
+<body>
+  <div id="pose_sequence" style="text-align: center">
+    <h2> For <%= @sequence.repititions %> rounds, repeat the following sequence of poses:  </h2>
+      <div id="poses">
+        <% @sequence.poses.each.with_index do |pose, i| %>
+          <h3><%= i + 1 %>. <%= pose.name %> - <%= pose.description %></h3>
+        <% end %>
+      </div>
+  </div>
 
-  <h2> For <%= @sequence.repititions %> rounds, repeat the following sequence of poses:
-    <% @sequence.poses.each.with_index do |pose, i| %>
-      <h3><%= i + 1 %>. <%= pose.name %> - <%= pose.description %></h3>
-    <% end %>
-  </h2>
-</div>
+  <div class="edit" align="center">
+    <%= link_to "Edit poses", edit_sequence_path(@sequence) %>
+  </div>
 
-<div class="edit" align="center">
-  <%= link_to "Edit poses", edit_sequence_path(@sequence) %>
-</div>
-
-<div class="new" align="center">
-  <%= link_to "Add a new pose", new_sequence_pose_path(@sequence) %>
-</div>
-
-<br />
-<div class="comments" align="center">
-  <%= form_for ([@sequence, @sequence.comments.build]) do |f| %>
-    <%= f.label :content, "Leave a commment" %><br /><br />
-    <%= f.text_area :content %><br />
-    <%= f.submit %>
-  <% end %>
+  <div class="new" align="center">
+    <%= link_to "Add a new pose", new_sequence_pose_path(@sequence) %>
+  </div>
 
   <br />
-  <% @sequence.comments.each do |f| %>
-    <% if f.content != nil %>
-      <h4><%= f.user.username %> says: <%= f.content %></h4>
-      <h5><%= f.created_at.strftime("%A, %d %b %Y %l:%M %p") %></h5>
+  <div class="comments" align="center">
+    <%= form_for ([@sequence, @sequence.comments.build]) do |f| %>
+      <%= f.label :content, "Leave a commment" %><br /><br />
+      <%= f.text_area :content %><br />
+      <%= f.submit %>
     <% end %>
-  <% end %>
-</div>
+
+    <br />
+    <% @sequence.comments.each do |f| %>
+      <% if f.content != nil %>
+        <h4><%= f.user.username %> says: <%= f.content %></h4>
+        <h5><%= f.created_at.strftime("%A, %d %b %Y %l:%M %p") %></h5>
+      <% end %>
+    <% end %>
+  </div>
+  <%= javascript_include_tag 'application' %>
+</body>
+</html>

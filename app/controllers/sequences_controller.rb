@@ -1,6 +1,15 @@
 class SequencesController < ApplicationController
   before_action :set_poses
 
+  def list
+    set_sequence
+    render plain: (
+      @sequence.poses.each do |pose|
+        pose
+      end
+    )
+  end
+
   def index
     @sequences = Sequence.all
     @users = User.all
@@ -32,7 +41,10 @@ class SequencesController < ApplicationController
 
   def show
     set_sequence
-    redirect_to sequence_poses_path(@sequence)
+    respond_to do |f|
+      f.html { render :'/poses/index' }
+      f.json { render json: @sequence }
+    end
   end
 
   def edit
