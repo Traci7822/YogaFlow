@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post '/sequences/:id', to: 'sequences#update'
   patch '/sequences/:sequence_id/poses/:id', to: 'sequences#update'
   patch '/sequences/:sequence_id/poses', to: 'sequences#add_pose', as: 'sequence_add_pose'
-  get '/sequences/:id/pose/', to: 'sequences#list'
+  get '/sequences/:id/list', to: 'sequences#list'
+  get '/sequences/:sequence_id/pose/:id', to: 'poses#list'
+
 
   resources :sequences do
     resources :poses
