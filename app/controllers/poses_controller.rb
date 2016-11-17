@@ -2,6 +2,11 @@ class PosesController < ApplicationController
   before_action :find_sequence
   before_action :set_poses
 
+  def list
+    @pose = Pose.find(params[:id])
+    render plain: @pose
+  end
+
   def index
     #editing a pose moves that pose to end of @sequence.poses
   end
