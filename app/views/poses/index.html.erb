@@ -1,20 +1,15 @@
 <head>
   <div class="description" align="center">
-    <h1>"<%= sequence_title %>"</h1>
-    <ul style="list-style: none;">
-      <li>Difficulty Rating: <%= @sequence.difficulty %></li>
-    </ul>
+    <h1 id="sequence-title"></h1>
+    <h4 id="sequence-difficulty"></h4>
   </div>
 </head>
 
 <body>
   <div id="pose_sequence" style="text-align: center">
-    <h2> For <%= @sequence.repititions %> rounds, repeat the following sequence of poses:  </h2>
-      <div id="poses">
-        <% @sequence.poses.each.with_index do |pose, i| %>
-          <h3><%= i + 1 %>. <%= pose.name %> - <%= pose.description %></h3>
-        <% end %>
-      </div>
+    <h2 id="repititions"></h2>
+    <div id="poses">
+    </div>
   </div>
 
   <div class="edit" align="center">
