@@ -1,9 +1,27 @@
 $(document).ready(function() {
   showSequence(id);
+  displayComments();
+
 
   $(".js-next").on("click", function() {
     //when clicking next, code runs twice and poses show twice
     scrollSequence();
+  });
+
+  $('form').on('submit', function(event) {
+    var valuesToSubmit = $(this).serialize();
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      data: valuesToSubmit,
+      dataType: "json",
+      success: function(response) {
+        addComment(response);
+      },
+      error: function(xhr, textStatus, errorThrown) {
+      }
+    });
+    event.preventDefault();
   });
 });
 
@@ -42,3 +60,29 @@ function scrollSequence(){
   //   $(".js-next").attr("data-id", id)
   // });
 };
+
+function displayComments() {
+  $.get('/sequences/' + id + '/list', function(data) {
+    for (var i = 0; i < data.comments.length; i++) {
+      var date = new Date(data.comments[i].created_at)
+      $("#display_comments").append('<h4>' + data.comments[i].user.username + " says: " + data.comments[i].content + '</h4>');
+      $("#display_comments").append('<h5>' + date.toUTCString() + '</h5>')
+    }
+  });
+  //need to submit comment via ajax so i can remove functionality from view
+}
+
+function addComment(data){
+  var response = data;
+  $.get('/sequences/' + id + '/list', function(data) {
+    for (var i = 0; i < data.comments.length; i++) {
+      if (data.comments[i].id == response.id) {
+        var date = new Date(data.comments[i].created_at)
+        $("#display_comments").append('<h4>' + data.comments[i].user.username + " says: " + data.comments[i].content + '</h4>');
+        $("#display_comments").append('<h5>' + date.toUTCString() + '</h5>')
+        $('.comment_form').val('');
+      }
+  }
+
+})
+}

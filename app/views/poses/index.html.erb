@@ -28,17 +28,12 @@
   <div class="comments" align="center">
     <%= form_for ([@sequence, @sequence.comments.build]) do |f| %>
       <%= f.label :content, "Leave a commment" %><br /><br />
-      <%= f.text_area :content %><br />
+      <%= f.text_area :content, class: 'comment_form' %><br />
       <%= f.submit %>
     <% end %>
 
     <br />
-    <% @sequence.comments.each do |f| %>
-      <% if f.content != nil %>
-        <h4><%= f.user.username %> says: <%= f.content %></h4>
-        <h5><%= f.created_at.strftime("%A, %d %b %Y %l:%M %p") %></h5>
-      <% end %>
-    <% end %>
+    <div id="display_comments"></div>
   </div>
 </body>
 
