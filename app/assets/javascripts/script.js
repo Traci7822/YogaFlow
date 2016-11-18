@@ -1,11 +1,8 @@
 $(document).ready(function() {
   showSequence(id);
   displayComments();
-  console.log('hello')
-
 
   $(".js-next").on("click", function() {
-    //when clicking next, code runs twice and poses show twice
     scrollSequence();
   });
 
@@ -17,7 +14,7 @@ $(document).ready(function() {
       data: valuesToSubmit,
       dataType: "json",
       success: function(response) {
-        addComment(response);
+        createCommentObject(response);
       },
       error: function(xhr, textStatus, errorThrown) {
       }
@@ -47,7 +44,6 @@ function listPoses(data){
 
 function scrollSequence(){
   $.get('/sequence_ids', function(data) {
-    debugger;
 
   })
   var nextId = id += 1;
@@ -88,6 +84,15 @@ function addComment(data){
         $('.comment_form').val('');
       }
   }
-
 })
+}
+
+function createCommentObject(response){
+  var Comment = function(content, created_at, id){
+    this.content = content;
+    this.created_at = created_at;
+    this.id = id;
+  }
+  var newComment = new Comment(response.content, response.created_at, response.id)
+  addComment(newComment);
 }
