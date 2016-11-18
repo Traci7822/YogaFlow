@@ -12,6 +12,7 @@ class SequencesController < ApplicationController
   end
 
   def new
+    #creating new sequence doesnt route properly after
     if current_user
       @sequence = Sequence.new
       pose_builder
