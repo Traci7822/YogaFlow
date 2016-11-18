@@ -63,7 +63,6 @@ function displayComments() {
       $("#display_comments").append('<h5>' + date.toUTCString() + '</h5>')
     }
   });
-  //need to submit comment via ajax so i can remove functionality from view
 }
 
 function addComment(data){
