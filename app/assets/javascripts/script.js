@@ -46,6 +46,10 @@ function listPoses(data){
 };
 
 function scrollSequence(){
+  $.get('/sequence_ids', function(data) {
+    debugger;
+
+  })
   var nextId = id += 1;
   window.location.href = '/sequences/' + nextId;
   $(".js-next").attr("data-id", nextId);
