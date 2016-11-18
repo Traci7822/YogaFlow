@@ -75,8 +75,8 @@ function addComment(data){
         $("#display_comments").append('<h5>' + date.toUTCString() + '</h5>')
         $('.comment_form').val('');
       }
-  }
-})
+    }
+  })
 }
 
 function createCommentObject(response){

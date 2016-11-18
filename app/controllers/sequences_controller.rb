@@ -34,6 +34,7 @@ class SequencesController < ApplicationController
     if @sequence.valid?
       #sets poses that make up the sequence
       @sequence.set_new_sequence_poses(params[:sequence])
+      binding.pry
       redirect_to sequences_path
     else
       #renders create new sequence form with errors
