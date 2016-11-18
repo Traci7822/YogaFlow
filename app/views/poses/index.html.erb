@@ -32,12 +32,15 @@
     <% end %>
 
     <br />
-    <% @sequence.comments.each do |f| %>
-      <% if f.content != nil %>
-        <h4><%= f.user.username %> says: <%= f.content %></h4>
-        <h5><%= f.created_at.strftime("%A, %d %b %Y %l:%M %p") %></h5>
+    <div id="display-comments">
+      <% @sequence.comments.each do |f| %>
+        <% if f.content != nil %>
+          <h4><%= f.user.username %> says: <%= f.content %></h4>
+          <h5><%= f.created_at.strftime("%A, %d %b %Y %l:%M %p") %></h5>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+
   </div>
 </body>
 

@@ -2,9 +2,14 @@ $(document).ready(function() {
   showSequence(id);
 
   $(".js-next").on("click", function() {
-    debugger;
     scrollSequence();
   });
+
+  $('form').on('submit', function(event) {
+    event.preventDefault;
+    var comment = $("comment_content").val()
+    //need to submit comment via ajax so i can remove functionality from view
+  })
 });
 
 var id = parseInt(window.location.pathname.split("/")[2])
