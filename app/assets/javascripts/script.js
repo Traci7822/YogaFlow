@@ -2,10 +2,6 @@ $(document).ready(function() {
   showSequence(id);
 
   $(".js-next").on("click", function() {
-<<<<<<< HEAD
-=======
-    debugger;
->>>>>>> sequenceScroller
     scrollSequence();
   });
 });
