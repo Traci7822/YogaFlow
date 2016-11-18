@@ -44,22 +44,15 @@ function listPoses(data){
 
 function scrollSequence(){
   $.get('/sequence_ids', function(data) {
-    
+    var idIndex = data.indexOf(id);
+    if (data[idIndex + 1] === undefined) {
+      nextId = data[0];
+    } else {
+      var nextId = data[idIndex + 1];
+    }
+    window.location.href = '/sequences/' + nextId;
+    $(".js-next").attr("data-id", nextId);
   })
-  var nextId = id += 1;
-  window.location.href = '/sequences/' + nextId;
-  $(".js-next").attr("data-id", nextId);
-
-  //is this acceptable for what the lab asks for? below ajax call was not displaying data
-  //check what id's are available and select from these to prevent missing id's
-
-  // $.get("/sequences/" + nextId + "/list", function(data) {
-  //   $("#sequence-title").html(data.title);
-  //   $("#sequence-difficulty").html("Difficulty Rating: " + data.difficulty)
-  //   $("#repititions").html("For " + data.repititions + " rounds, repeat the following sequence of poses:")
-  //   listPoses(data);
-  //   $(".js-next").attr("data-id", id)
-  // });
 };
 
 function displayComments() {
