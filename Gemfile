@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'jquery-turbolinks'
 gem 'active_model_serializers'
 gem 'figaro'
 gem 'omniauth-oauth2', '~> 1.1'

@@ -1,12 +1,14 @@
-
-<head>
+<html>
+<%= javascript_include_tag 'application' %>
+<head class="<%= controller_name %> <%= action_name %>">
   <div class="description" align="center">
     <h1 id="sequence-title"></h1>
+    <a href="#" class="js-next" data-id="">Next Sequence</a>
     <h4 id="sequence-difficulty"></h4>
   </div>
 </head>
 
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
   <div id="pose_sequence" style="text-align: center">
     <h2 id="repititions"></h2>
     <div id="poses">
@@ -38,3 +40,5 @@
     <% end %>
   </div>
 </body>
+
+</html>
