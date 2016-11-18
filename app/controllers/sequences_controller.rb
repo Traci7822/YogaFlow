@@ -1,6 +1,9 @@
 class SequencesController < ApplicationController
   before_action :set_poses
 
+  #none of the forms route properly after submission. FIX ME!!!!
+
+
   def list
     set_sequence
     render json: @sequence
@@ -12,7 +15,6 @@ class SequencesController < ApplicationController
   end
 
   def new
-    #creating new sequence doesnt route properly after
     if current_user
       @sequence = Sequence.new
       pose_builder
