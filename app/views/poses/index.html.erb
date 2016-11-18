@@ -27,15 +27,12 @@
   <div class="comments" align="center">
     <%= form_for ([@sequence, @sequence.comments.build]) do |f| %>
       <%= f.label :content, "Leave a commment" %><br /><br />
-      <%= f.text_area :content %><br />
+      <%= f.text_area :content, class: 'comment_form' %><br />
       <%= f.submit %>
     <% end %>
 
     <br />
-    <div id="display_comments">
-
-    </div>
-
+    <div id="display_comments"></div>
   </div>
 </body>
 
