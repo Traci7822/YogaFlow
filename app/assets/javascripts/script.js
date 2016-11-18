@@ -1,6 +1,7 @@
 $(document).ready(function() {
   showSequence(id);
   displayComments();
+  console.log('hello')
 
 
   $(".js-next").on("click", function() {
