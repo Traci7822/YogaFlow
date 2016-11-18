@@ -2,6 +2,7 @@ $(document).ready(function() {
   showSequence(id);
 
   $(".js-next").on("click", function() {
+    debugger;
     scrollSequence();
   });
 });
@@ -29,6 +30,9 @@ function scrollSequence(){
   var nextId = id += 1;
   window.location.href = '/sequences/' + nextId;
   $(".js-next").attr("data-id", nextId);
+
+  //is this acceptable for what the lab asks for? below ajax call was not displaying data
+
   // $.get("/sequences/" + nextId + "/list", function(data) {
   //   $("#sequence-title").html(data.title);
   //   $("#sequence-difficulty").html("Difficulty Rating: " + data.difficulty)
