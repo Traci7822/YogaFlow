@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   patch '/sequences/:sequence_id/poses', to: 'sequences#add_pose', as: 'sequence_add_pose'
   get '/sequences/:id/list', to: 'sequences#list'
   get '/sequences/:sequence_id/pose/:id', to: 'poses#list'
-
+  get '/sequence_ids', to: 'sequences#ids'
 
   resources :sequences do
     resources :poses

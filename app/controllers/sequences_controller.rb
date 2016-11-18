@@ -9,6 +9,11 @@ class SequencesController < ApplicationController
     render json: @sequence
   end
 
+  def ids
+    @ids = Sequence.all.map { |sequence| sequence.id  }
+    render json: @ids
+  end
+
   def index
     @sequences = Sequence.all
     @users = User.all
