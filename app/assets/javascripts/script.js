@@ -2,6 +2,7 @@ $(document).ready(function() {
   showSequence(id);
 
   $(".js-next").on("click", function() {
+    //when clicking next, code runs twice and poses show twice
     scrollSequence();
   });
 });
