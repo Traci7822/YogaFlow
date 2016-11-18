@@ -49,11 +49,9 @@ function scrollSequence(){
 function displayComments() {
   $.get('/sequences/' + id + '/list', function(data) {
     for (var i = 0; i < data.comments.length; i++) {
-      var date = (data.comments[i].created_at).toString().replace(/UTC\s/,"");
-      debugger;
-
+      var date = new Date(data.comments[i].created_at)
       $("#display_comments").append('<h4>' + data.comments[i].user.username + " says: " + data.comments[i].content + '</h4>');
-      $("#display_comments").append('<h5>' + new Date(date) + '</h5>')
+      $("#display_comments").append('<h5>' + date.toUTCString() + '</h5>')
     }
   });
   //need to submit comment via ajax so i can remove functionality from view
