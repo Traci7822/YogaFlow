@@ -1,11 +1,16 @@
 $(document).ready(function() {
-  showSequence();
-})
+  showSequence(id);
 
-function showSequence() {
-  console.log("once");
-  var id = parseInt(window.location.pathname.split("/")[2]);
+  $(".js-next").on("click", function() {
+    scrollSequence();
+  });
+});
+
+var id = parseInt(window.location.pathname.split("/")[2])
+
+function showSequence(id) {
   $.get('/sequences/' + id + '/list', function(data) {
+    var id = data["id"];
     $("#sequence-title").html('"' + data.title + '"')
     $("#sequence-difficulty").html("Difficulty Rating: " + data.difficulty)
     $("#repititions").html("For " + data.repititions + " rounds, repeat the following sequence of poses:")
@@ -16,6 +21,19 @@ function showSequence() {
 function listPoses(data){
   poses = data.poses
   for (var i = 0; i < poses.length; i++){
-    $("#poses").append('<li>' + poses[i].name + '</li>');
+    $("#poses").append('<li>' + poses[i].name + poses[i].description + '</li>');
   }
+};
+
+function scrollSequence(){
+  var nextId = id += 1;
+  window.location.href = '/sequences/' + nextId;
+  $(".js-next").attr("data-id", nextId);
+  // $.get("/sequences/" + nextId + "/list", function(data) {
+  //   $("#sequence-title").html(data.title);
+  //   $("#sequence-difficulty").html("Difficulty Rating: " + data.difficulty)
+  //   $("#repititions").html("For " + data.repititions + " rounds, repeat the following sequence of poses:")
+  //   listPoses(data);
+  //   $(".js-next").attr("data-id", id)
+  // });
 };
