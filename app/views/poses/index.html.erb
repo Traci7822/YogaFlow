@@ -25,7 +25,7 @@
 
   <br />
   <div class="comments" align="center">
-    <%= form_for ([@sequence, @sequence.comments.build]) do |f| %>
+    <%= form_for ([@sequence, @sequence.comments.build]), html: {:class => 'comment_form'} do |f| %>
       <%= f.label :content, "Leave a commment" %><br /><br />
       <%= f.text_area :content, class: 'comment_form' %><br />
       <%= f.submit %>

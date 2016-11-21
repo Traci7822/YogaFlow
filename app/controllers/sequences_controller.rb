@@ -4,10 +4,10 @@ class SequencesController < ApplicationController
   #none of the forms route properly after submission. FIX ME!!!!
 
 
-  def list
-    set_sequence
-    render json: @sequence
-  end
+  # def show
+  #   set_sequence
+  #   render json: @sequence
+  # end
 
   def ids
     @ids = Sequence.all.map { |sequence| sequence.id  }
@@ -34,7 +34,6 @@ class SequencesController < ApplicationController
     if @sequence.valid?
       #sets poses that make up the sequence
       @sequence.set_new_sequence_poses(params[:sequence])
-      binding.pry
       redirect_to sequences_path
     else
       #renders create new sequence form with errors

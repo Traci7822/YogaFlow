@@ -5,12 +5,11 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'users#new', as: 'sign_up'
   get 'log_in', to: 'sessions#new', as: 'log_in'
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
-  #get 'auth/github', :as => 'github_auth'
   get '/auth/github/callback' => 'sessions#create_with_github'
   post '/sequences/:id', to: 'sequences#update'
   patch '/sequences/:sequence_id/poses/:id', to: 'sequences#update'
   patch '/sequences/:sequence_id/poses', to: 'sequences#add_pose', as: 'sequence_add_pose'
-  get '/sequences/:id/list', to: 'sequences#list'
+  # get '/sequences/:id/list', to: 'sequences#list'
   get '/sequences/:sequence_id/pose/:id', to: 'poses#list'
   get '/sequence_ids', to: 'sequences#ids'
 
