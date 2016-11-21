@@ -27,41 +27,50 @@ var id = parseInt(window.location.pathname.split("/")[2])
 
 function showSequence(id) {
   $.get('/sequences/' + id + '.json', function(data) {
-    var id = data["id"];
-    $("#sequence-title").html('"' + data.title + '"')
-    $("#sequence-difficulty").html("Difficulty Rating: " + data.difficulty)
-    $("#repititions").html("For " + data.repititions + " rounds, repeat the following sequence of poses:")
+    showSequenceData(data);
     listPoses(data);
   })
 };
 
+function showSequenceData(data){
+  $("#sequence-title").html('"' + data.title + '"')
+  $("#sequence-difficulty").html("Difficulty Rating: " + data.difficulty)
+  $("#repititions").html("For " + data.repititions + " rounds, repeat the following sequence of poses:")
+}
+
 function listPoses(data){
-  poses = data.poses
-  for (var i = 0; i < poses.length; i++){
-    $("#poses").append('<li>' + poses[i].name + poses[i].description + '</li>');
+  for (var i = 0; i < data.poses.length; i++){
+    addPoseToDOM(data.poses[i]);
   }
 };
 
+function addPoseToDOM(pose){
+  $("#poses").append('<li>' + pose.name + pose.description + '</li>');
+}
+
 function scrollSequence(){
   $.get('/sequence_ids', function(data) {
-    debugger;
-    var idIndex = data.indexOf(id);
-    if (data[idIndex + 1] === undefined) {
-      nextId = data[0];
-    } else {
-      var nextId = data[idIndex + 1];
-    }
+    nextId = setNextId(data);
     window.location.href = '/sequences/' + nextId;
     $(".js-next").attr("data-id", nextId);
   })
 };
 
+function setNextId(data) {
+  var nextId = 0;
+  var idIndex = data.indexOf(id);
+  if (data[idIndex + 1] === undefined) {
+    nextId = data[0];
+  } else {
+    nextId = data[idIndex + 1];
+  }
+  return nextId
+}
+
 function displayComments() {
   $.get('/sequences/' + id + '.json', function(data) {
     for (var i = 0; i < data.comments.length; i++) {
-      var date = new Date(data.comments[i].created_at)
-      $("#display_comments").append('<h4>' + data.comments[i].user.username + " says: " + data.comments[i].content + '</h4>');
-      $("#display_comments").append('<h5>' + date.toUTCString() + '</h5>')
+      showComment(data.comments[i]);
     }
   });
 }
@@ -86,8 +95,16 @@ function Comment(data){
 }
 
 Comment.prototype.appendToDOM = function() {
-  $("#display_comments").append('<h4>' + this.user.username + " says: " + this.content + '</h4>');
-  $("#display_comments").append('<h5>' + readableDate(this) + '</h5>')
+  showComment(this);
+  clearForm();
+}
+
+function showComment(data){
+  $("#display_comments").append('<h4>' + data.user.username + " says: " + data.content + '</h4>');
+  $("#display_comments").append('<h5>' + readableDate(data) + '</h5>')
+}
+
+function clearForm() {
   $('.comment_form').val('');
 }
 
