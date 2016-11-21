@@ -7,6 +7,7 @@ $(document).ready(function() {
   });
 
   $('.comment_form').on('submit', function(event) {
+    event.preventDefault();
     var valuesToSubmit = $(this).serialize();
     $.ajax({
       type: "POST",
@@ -14,13 +15,11 @@ $(document).ready(function() {
       data: valuesToSubmit,
       dataType: "json",
       success: function(response) {
-        console.log(response)
         addComment(response);
       },
       error: function(xhr, textStatus, errorThrown) {
       }
     });
-    event.preventDefault();
   });
 });
 
@@ -76,7 +75,7 @@ function addComment(data){
         comment.appendToDOM()
       }
     }
-  })
+  });
 }
 
 function Comment(data){
@@ -87,8 +86,12 @@ function Comment(data){
 }
 
 Comment.prototype.appendToDOM = function() {
-  var date = new Date(this.created_at)
   $("#display_comments").append('<h4>' + this.user.username + " says: " + this.content + '</h4>');
-  $("#display_comments").append('<h5>' + date.toUTCString() + '</h5>')
+  $("#display_comments").append('<h5>' + readableDate(this) + '</h5>')
   $('.comment_form').val('');
+}
+
+function readableDate(data) {
+  var getDate = new Date(data.created_at)
+  return getDate.toUTCString()
 }
