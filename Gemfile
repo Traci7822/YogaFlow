@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem 'active_model_serializers'
 gem 'figaro'

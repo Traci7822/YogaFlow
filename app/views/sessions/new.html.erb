@@ -1,24 +1,42 @@
-<h1>Log in to your YogaFlow account!</h1>
-<%= form_tag sessions_path do %>
-  <% if @user.errors.any? %>
-    <div class="error_explanation">
-      <h2>There were some errors:</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <h1>Log in to your YogaFlow account!</h1>
+    <%= form_tag sessions_path do %>
+      <% if @user.errors.any? %>
+        <div class="error_explanation">
+          <h2>There were some errors:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+    <div>
+      <%= label_tag :username %><br />
+      <%= text_field_tag :username %><br />
     </div>
-  <% end %>
 
-<div class="field_with_errors">
-  <%= label_tag :username %><br />
-  <%= text_field_tag :username %><br />
-</div>
+    <div>
+      <%= label_tag :password %><br />
+      <%= password_field_tag :password %><br />
+      <%= submit_tag "Log In" %>
+    </div>
+    <% end %>
 
-<div class="field_with_errors">
-  <%= label_tag :password %><br />
-  <%= password_field_tag :password %><br />
-  <%= submit_tag "Log In" %>
-</div>
-<% end %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

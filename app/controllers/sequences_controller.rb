@@ -1,14 +1,6 @@
 class SequencesController < ApplicationController
   before_action :set_poses
 
-  #none of the forms route properly after submission. FIX ME!!!!
-
-
-  # def show
-  #   set_sequence
-  #   render json: @sequence
-  # end
-
   def ids
     @ids = Sequence.all.map { |sequence| sequence.id  }
     render json: @ids
