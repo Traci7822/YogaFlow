@@ -40,8 +40,8 @@ function showSequenceData(data){
 }
 
 function listPoses(data){
-  for (var i = 0; i < data.poses.length; i++){
-    addPoseToDOM(data.poses[i]);
+  for (var i = 0; i < data.sequence.poses.length; i++){
+    addPoseToDOM(data.sequence.poses[i]);
   }
 };
 
