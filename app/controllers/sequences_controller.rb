@@ -45,9 +45,15 @@ class SequencesController < ApplicationController
 
   def show
     set_sequence
+    response = {
+      :sequence => @sequence,
+      :ids => Sequence.all.map { |sequence| sequence.id  },
+      :poses => @sequence.poses,
+      :comments => JSON.parse(@sequence.comments.to_json(:include => [:user => {:only => [:username]}]))
+        }
     respond_to do |f|
       f.html { render :'/poses/index' }
-      f.json { render json: @sequence }
+      f.json { render json: response }
     end
   end
 

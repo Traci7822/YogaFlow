@@ -33,9 +33,9 @@ function showSequence(id) {
 };
 
 function showSequenceData(data){
-  $("#sequence-title").html('"' + data.title + '"')
-  $("#sequence-difficulty").html("Difficulty Rating: " + data.difficulty)
-  $("#repititions").html("For " + data.repititions + " rounds, repeat the following sequence of poses:")
+  $("#sequence-title").html('"' + data.sequence.title + '"')
+  $("#sequence-difficulty").html("Difficulty Rating: " + data.sequence.difficulty)
+  $("#repititions").html("For " + data.sequence.repititions + " rounds, repeat the following sequence of poses:")
 }
 
 function listPoses(data){
@@ -49,8 +49,8 @@ function addPoseToDOM(pose){
 }
 
 function scrollSequence(){
-  $.get('/sequence_ids', function(data) {
-    nextId = setNextId(data);
+  $.get('/sequences/' + id + '.json', function(data) {
+    nextId = setNextId(data.ids);
     window.location.href = '/sequences/' + nextId;
     $(".js-next").attr("data-id", nextId);
   })
