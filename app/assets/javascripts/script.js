@@ -24,9 +24,10 @@ $(document).ready(function() {
 });
 
 var id = parseInt(window.location.pathname.split("/")[2])
+var jsonData = '/sequences/' + id + '.json';
 
 function showSequence(id) {
-  $.get('/sequences/' + id + '.json', function(data) {
+  $.get(jsonData, function(data) {
     showSequenceData(data);
     listPoses(data);
   })
@@ -49,7 +50,7 @@ function addPoseToDOM(pose){
 }
 
 function scrollSequence(){
-  $.get('/sequences/' + id + '.json', function(data) {
+  $.get(jsonData, function(data) {
     nextId = setNextId(data.ids);
     window.location.href = '/sequences/' + nextId;
     $(".js-next").attr("data-id", nextId);
@@ -68,7 +69,7 @@ function setNextId(data) {
 }
 
 function displayComments() {
-  $.get('/sequences/' + id + '.json', function(data) {
+  $.get(jsonData, function(data) {
     for (var i = 0; i < data.comments.length; i++) {
       showComment(data.comments[i]);
     }
@@ -77,7 +78,7 @@ function displayComments() {
 
 function addComment(data){
   var response = data;
-  $.get('/sequences/' + id + '.json', function(data) {
+  $.get(jsonData, function(data) {
     for (var i = 0; i < data.comments.length; i++) {
       if (data.comments[i].id == response.id) {
         var comment = new Comment(data.comments[i])
