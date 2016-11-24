@@ -64,7 +64,7 @@ class Sequence < ActiveRecord::Base
 
   def set_new_sequence_pose_ids(attribute)
     if attribute.values.first && attribute.values.last
-      @pose = Pose.find_or_create_bycreate(:name => attribute.values.first)
+      @pose = Pose.find_or_create_by(:name => attribute.values.first)
       if @pose.description == nil
         @pose.description = attribute.values.last
         @pose.save
