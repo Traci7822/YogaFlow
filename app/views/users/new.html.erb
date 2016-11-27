@@ -1,23 +1,29 @@
-<br /><h1>Sign up for a YogaFlow account!</h1><br />
-<%= form_for @user do |f| %>
+<div class="sign-up-header">
+  <h1>Sign up for a YogaFlow account!</h1>
+</div>
 
-  <% if @user.errors.any? %>
-    <div class="error_explanation">
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="create-user">
+  <%= form_for @user do |f| %>
+
+    <% if @user.errors.any? %>
+      <div class="error_explanation">
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div>
+      <%= f.label :username %><br />
+      <%= f.text_field :username %><br />
     </div>
-  <% end %>
-  <div>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %><br />
-  </div>
 
-  <div>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %><br /><br />
-  </div>
-  <%= f.submit %>
-<% end %>
+    <div>
+      <%= f.label :password %><br />
+      <%= f.password_field :password %><br /><br />
+    </div>
+    <%= f.submit %>
+  <% end %>
+
+</div>
