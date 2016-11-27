@@ -18,7 +18,7 @@
       <div class="row">
         <% @sequences.each do |sequence| %>
           <div class="col-lg-4">
-              <h3><h2><%= link_to sequence.title, sequence_path(sequence) %></h2>
+              <h3><h2><%= link_to sequence.title, sequence_path(sequence), class: 'link-text'  %></h2>
           </div>
         <% end %>
       </div>
@@ -26,7 +26,7 @@
     <div style="text-align: center">
       <hr align="center" width="25%" />
 
-      <h2><%= link_to "Create a new sequence", new_sequence_path %></h2>
+      <h2><%= link_to "Create a new sequence", new_sequence_path, class: 'link-text'  %></h2>
 
       <% end %>
     </div>
