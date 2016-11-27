@@ -1,12 +1,14 @@
-<%= form_for(@sequence) do |f| %>
-  <%= f.fields_for :poses do |pose_builder| %>
-      Edit pose:
-      <%= pose_builder.label :name %>
-      <%= pose_builder.text_field :name%>
-      <%= pose_builder.label :description %>
-      <%= pose_builder.text_field :description %><br />
+<div class="edit-sequence">
+  <%= form_for(@sequence) do |f| %>
+    <%= f.fields_for :poses do |pose_builder| %>
+        Edit pose:
+        <%= pose_builder.label :name %>
+        <%= pose_builder.text_field :name%>
+        <%= pose_builder.label :description %>
+        <%= pose_builder.text_field :description %><br />
+    <% end %>
+    <%= f.label :repititions %>
+    <%= f.select :repititions, options_for_select(1..10), :prompt => 'Select number of repitions' %>
+    <%= f.submit %>
   <% end %>
-  <%= f.label :repititions %>
-  <%= f.select :repititions, options_for_select(1..10), :prompt => 'Select number of repitions' %>
-  <%= f.submit %>
-<% end %>
+</div>

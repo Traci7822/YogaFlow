@@ -1,14 +1,17 @@
 <div class="header-text">
-  <h1 align="center">Welcome to YogaFlow
-    <% if current_user %>
-        <%= current_user.username %>!</h1>
-      <% else %>
-        "Future Yogi!"
-      <% end %>
-  <hr width="50%" />
+  <header>
+      <h1 align="center">Welcome to YogaFlow
+        <% if current_user %>
+            <%= current_user.username %>!</h1>
+          <% else %>
+            "Future Yogi!"
+          <% end %>
+      <hr width="50%" />
+  </header>
 </div>
 
-<div class="user-header" align="center">
+
+<div id="user-header" align="center">
   <% if current_user %>
     <%= render '/layouts/user_sub_header' %>
   <% else %>

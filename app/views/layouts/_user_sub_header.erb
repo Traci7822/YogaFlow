@@ -1,4 +1,8 @@
-<h4>
-  <%= render 'layouts/go_back' %>
-  <%= link_to "Log Out", log_out_path, class: 'link-text return-routes'  %>
-</h4>
+<div class="return-routes">
+  <h4>
+    <%= render 'layouts/go_back' %>
+    <div class='link-text' id="log-out">
+      <%= link_to "Log Out", log_out_path %>
+    </div>
+  </h4>
+</div>

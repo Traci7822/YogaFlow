@@ -1,13 +1,15 @@
-<% content_for :form_errors do %>
-  <% if !object.errors.empty? %>
-    <p>
-      <%= pluralize(object.errors.count, "error") %> prevented the form from being saved:
-    </p>
+<div class="form_errors">
+  <% content_for :form_errors do %>
+    <% if !object.errors.empty? %>
+      <p>
+        <%= pluralize(object.errors.count, "error") %> prevented the form from being saved:
+      </p>
 
-    <ul>
-      <% object.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
+      <ul>
+        <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
-<% end %>
+</div>
