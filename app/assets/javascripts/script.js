@@ -71,7 +71,7 @@ function setNextId(data) {
 function displayComments() {
   $.get(jsonData, function(data) {
     for (var i = 0; i < data.comments.length; i++) {
-      showComment(data.comments[i]);
+      showData(data.comments[i], "#display_comments");
     }
   });
 }
@@ -96,17 +96,17 @@ function Comment(data){
 }
 
 Comment.prototype.appendToDOM = function() {
-  showComment(this);
-  clearForm();
+  showComment(this, "#display_comments");
+  clearForm('.comment_form');
 }
 
-function showComment(data){
-  $("#display_comments").append('<h4>' + data.user.username + " says: " + data.content + '</h4>');
-  $("#display_comments").append('<h5>' + readableDate(data) + '</h5>')
+function showData(data, tagId){
+  $(tagId).append('<h4>' + data.user.username + " says: " + data.content + '</h4>');
+  $(tagId).append('<h5>' + readableDate(data) + '</h5>')
 }
 
-function clearForm() {
-  $('.comment_form').val('');
+function clearAttribute(attribute) {
+  $(attribute).val('');
 }
 
 function readableDate(data) {
