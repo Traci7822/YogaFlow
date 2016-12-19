@@ -23,26 +23,26 @@ $(document).ready(function() {
   });
 });
 
-var id = parseInt(window.location.pathname.split("/")[2])
+var id = parseInt(window.location.pathname.split("/")[2]);
 
 function showSequence(id) {
   $.get('/sequences/' + id + '.json', function(data) {
     showSequenceData(data);
     listPoses(data);
-  })
-};
+  });
+}
 
 function showSequenceData(data){
-  $("#sequence-title").html('"' + data.title + '"')
-  $("#sequence-difficulty").html("Difficulty Rating: " + data.difficulty)
-  $("#repititions").html("For " + data.repititions + " rounds, repeat the following sequence of poses:")
+  $("#sequenceTitle").html('"' + data.title + '"');
+  $("#sequence-difficulty").html("Difficulty Rating: " + data.difficulty);
+  $("#repititions").html("For " + data.repititions + " rounds, repeat the following sequence of poses:");
 }
 
 function listPoses(data){
   for (var i = 0; i < data.poses.length; i++){
     addPoseToDOM(data.poses[i]);
   }
-};
+}
 
 function addPoseToDOM(pose){
   $("#poses").append('<li>' + pose.name + pose.description + '</li>');
@@ -53,8 +53,8 @@ function scrollSequence(){
     nextId = setNextId(data);
     window.location.href = '/sequences/' + nextId;
     $(".js-next").attr("data-id", nextId);
-  })
-};
+  });
+}
 
 function setNextId(data) {
   var nextId = 0;
@@ -64,7 +64,7 @@ function setNextId(data) {
   } else {
     nextId = data[idIndex + 1];
   }
-  return nextId
+  return nextId;
 }
 
 function displayComments() {
@@ -80,8 +80,8 @@ function addComment(data){
   $.get('/sequences/' + id + '.json', function(data) {
     for (var i = 0; i < data.comments.length; i++) {
       if (data.comments[i].id == response.id) {
-        var comment = new Comment(data.comments[i])
-        comment.appendToDOM()
+        var comment = new Comment(data.comments[i]);
+        comment.appendToDOM();
       }
     }
   });
@@ -97,11 +97,11 @@ function Comment(data){
 Comment.prototype.appendToDOM = function() {
   showComment(this);
   clearForm();
-}
+};
 
 function showComment(data){
   $("#display_comments").append('<h4>' + data.user.username + " says: " + data.content + '</h4>');
-  $("#display_comments").append('<h5>' + readableDate(data) + '</h5>')
+  $("#display_comments").append('<h5>' + readableDate(data) + '</h5>');
 }
 
 function clearForm() {
@@ -109,6 +109,6 @@ function clearForm() {
 }
 
 function readableDate(data) {
-  var getDate = new Date(data.created_at)
-  return getDate.toUTCString()
+  var getDate = new Date(data.created_at);
+  return getDate.toUTCString();
 }

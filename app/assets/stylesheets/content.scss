@@ -1,83 +1,86 @@
-.form_errors {
-
+body {
+    background: url('/images/yogabackground.jpg') repeat-x 50% 50% fixed;
+    background-size: 100%;
+    background-position: right 0px top 75px;
+    font-family: Tahoma, Geneva, sans-serif;
+    height: 100%;
+    // height: auto;
+    // color: #FF5F35;
+    // text-shadow: 2px 2px black;
+    // width: 100%;
 }
 
-.link-text {
-  color: #EDE1B3;
+.chakras {
+  margin-left: 45.2%;
+  margin-right: auto;
+  width: 10%;
+  margin-top: -125px;
+  // margin-bottom: 100%;
 }
 
-.return-routes {
-  padding-left: 20px;
+.chakraIcon {
+  margin-left: 35px;
+  width: 50%;
+  // padding: 6px auto 6px auto;
+  margin-bottom: 25px;
+  // margin-bottom: 30px;
+  // margin: 6px;
 }
-
-#go-back {
-  padding-left: 80px;
-  padding-bottom: 30px;
-  float: left;
-}
-
-#log-out {
-  padding-right: 80px;
-  padding-bottom: 30px;
-  float: right;
-}
-
-#sign-up {
+//
+// .linkText {
+//   color: #EDE1B3;
+// }
+//
+// .returnRoutes {
+//   padding-left: 20px;
+// }
+//
+// #go-back {
+//   padding-left: 80px;
+//   padding-bottom: 30px;
+//   float: left;
+// }
+//
+// #logOut {
+//   padding-right: 80px;
+//   padding-bottom: 30px;
+//   float: right;
+// }
+//
+// #signUp {
+//   text-align: center;
+//   width: auto;
+// }
+//
+.headerText h1{
+  padding-top: 20px;
+  color: #D55200;
   text-align: center;
-  width: auto;
+  font-size: 2.8em;
 }
-
-#log-in {
-
-}
-
-#git-log-in {
-
-}
-
-.header-text {
-  color: #FF3613;
-  padding-bottom: 90px;
-  padding-left: 20px;
-  text-align: center;
-  position: relative;
-  transform: translateY(-30%);
-}
-
-#user-header {
-  bottom: -15;
-  position: absolute;
+//
+#userHeader {
+  // background: black;
   z-index: 1;
   width: 100%;
+  height: 6%;
+  position: fixed;
+  bottom: 0;
 }
-
-
-body {
-    background: url('/images/yogabackground.jpg') fixed center;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    color: #FF5F35;
-    text-shadow: 2px 2px black;
-    width: 100%;
-    font-family: "Lucida Console";
-}
-
-header {
-  top: 0;
-  height: 60px;
+//
+.header {
+  height: 10%;
   background: black;
 }
-
-.wrapper {
-  height: 100vh;
-}
-
-footer {
+//
+// .wrapper {
+//   height: 100vh;
+// }
+//
+.footer {
     background: black;
     width: 100%;
-    height: 100px;
+    height: 10%;
     position: fixed;
     bottom: 0;
-    left: 0;
 }

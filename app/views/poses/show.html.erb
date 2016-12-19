@@ -1,5 +1,10 @@
-<h2> For <%= @sequence.repititions %> rounds, repeat the following sequence of poses:
-  <% @sequence.poses.each.with_index do |pose, i| %>
-    <h3><%= i + 1 %>. <%= pose.name %> - <%= pose.description %></h3>
-  <% end %>
-</h2>
+<div class="sequenceDescription">
+  <h2>For <%= @sequence.repititions %> rounds, repeat the following sequence of poses: </h2>
+    <div id="poseList">
+      <% @sequence.poses.each.with_index do |pose, i| %>
+      <h3 class="poseListing">
+        <%= i + 1 %>. <%= pose.name %> - <%= pose.description %>
+      </h3>
+      <% end %>
+    </div>
+</div>

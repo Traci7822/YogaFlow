@@ -1,39 +1,30 @@
-<html>
-<head>
-  <div class="description" align="center">
-    <h1 id="sequence-title"></h1>
-    <a href="#" class="js-next" data-id="">Next Sequence</a>
-    <h4 id="sequence-difficulty"></h4>
-  </div>
-</head>
+<div class="sequenceInfo">
+  <div id="sequenceTitle"></div>
+  <div id="nextSequence"><a href="#" class="js-next" data-id="">Next Sequence</a></div>
+  <div id="sequence-difficulty"></div>
+</div>
 
-<body>
-  <div id="pose_sequence" style="text-align: center">
-    <h2 id="repititions"></h2>
-    <div id="poses">
-    </div>
-  </div>
+<div id="pose_sequence" style="text-align: center">
+  <div id="repititions"></div>
+  <div id="poses"></div>
+</div>
 
-  <br />
-  <div class="edit" align="center">
-    <%= link_to "Edit poses", edit_sequence_path(@sequence), class: 'link-text'  %>
+<div class="addEditPoses">
+  <div class="newPose">
+    <%= link_to "Add a new pose", new_sequence_pose_path(@sequence), class: 'linkText' %>
   </div>
-
-  <div class="new" align="center">
-    <%= link_to "Add a new pose", new_sequence_pose_path(@sequence), class: 'link-text'  %>
+  <div class="editPost">
+    <%= link_to "Edit poses", edit_sequence_path(@sequence), class: 'linkText' %>
   </div>
+</div>
 
-  <br />
-  <div class="comments" align="center">
+<div class="comments">
+  <div id="commentForm">
     <%= form_for ([@sequence, @sequence.comments.build]), html: {:class => 'comment_form'} do |f| %>
       <%= f.label :content, "Leave a commment" %><br /><br />
       <%= f.text_area :content, class: 'comment_form' %><br />
       <%= f.submit %>
     <% end %>
-
-    <br />
-    <div id="display_comments"></div>
   </div>
-</body>
-
-</html>
+  <div id="display_comments"></div>
+</div>

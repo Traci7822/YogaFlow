@@ -1,16 +1,16 @@
-<div class="header-text">
-  <header>
+<div class="headerText">
+  <div class="welcomeText">
       <h1>Welcome to YogaFlow
         <% if current_user %>
             <%= current_user.username %>!</h1>
           <% else %>
             "Future Yogi!"
           <% end %>
-  </header>
+  </div>
 </div>
 
 
-<div id="user-header" align="center">
+<div id="userHeader" align="center">
   <% if current_user %>
     <%= render '/layouts/user_sub_header' %>
   <% else %>

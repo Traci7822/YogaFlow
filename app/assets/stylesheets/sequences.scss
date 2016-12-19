@@ -1,37 +1,21 @@
 // Place all the styles related to the Sequences controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#new-sequence {
-  bottom: 15;
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-}
-
-.edit-sequence {
-
-}
-
-.difficulty {
-
-}
-
-.pose_builder {
-
-}
-
-.repitions {
-
-}
-
+// #new-sequence {
+//   bottom: 15;
+//   position: absolute;
+//   z-index: 1;
+//   width: 100%;
+// }
+//
 #sequenceHeader {
-  color: #FF5260;
+  color: #F6BF02;
   font-size: 2em;
   text-align: center;
   padding: 40px;
 }
 
 #sequences {
-  font-size: 1.5em;
+  // font-size: 1.5em;
   padding: 40px;
 }

@@ -1,24 +1,21 @@
 <html>
-<head>
-  <title>Yogaflow</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Yogaflow</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<div class="wrapper">
-  <header></header>
-  <main>
-    <%= render 'layouts/header' %>
-    <%= yield :form_errors %>
-    <%= yield %>
-  </main>
-  <footer></footer>
-
-</div>
-
-
-
-</body>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+      <main>
+        <%= render 'layouts/header' %>
+        <%= yield :form_errors %>
+        <%= yield %>
+      </main>
+      <div class="footer"></div>
+    </div>
+  </body>
+  
 </html>

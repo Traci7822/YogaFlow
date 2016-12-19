@@ -1,12 +1,12 @@
-<div class="sign-up-header">
+<div class="signUpHeader">
   <h1>Sign up for a YogaFlow account!</h1>
 </div>
 
-<div class="create-user">
+<div class="createUserForm">
   <%= form_for @user do |f| %>
 
     <% if @user.errors.any? %>
-      <div class="error_explanation">
+      <div class="errorExplanation">
         <ul>
           <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
