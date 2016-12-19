@@ -14,38 +14,32 @@ body {
   margin-left: 45.2%;
   margin-right: auto;
   width: 10%;
-  margin-top: -125px;
-  // margin-bottom: 100%;
+  margin-top: -75px;
 }
 
 .chakraIcon {
   margin-left: 35px;
   width: 50%;
-  // padding: 6px auto 6px auto;
-  margin-bottom: 25px;
-  // margin-bottom: 30px;
-  // margin: 6px;
+  margin-bottom: 30px;
 }
 //
-// .linkText {
-//   color: #EDE1B3;
-// }
+.linkText {
+
+}
 //
-// .returnRoutes {
-//   padding-left: 20px;
-// }
+
 //
-// #go-back {
-//   padding-left: 80px;
-//   padding-bottom: 30px;
-//   float: left;
-// }
+#goBack {
+  padding-left: 80px;
+  padding-bottom: 30px;
+  float: left;
+}
 //
-// #logOut {
-//   padding-right: 80px;
-//   padding-bottom: 30px;
-//   float: right;
-// }
+#logOut {
+  padding-right: 80px;
+  padding-bottom: 30px;
+  float: right;
+}
 //
 // #signUp {
 //   text-align: center;
@@ -60,12 +54,15 @@ body {
 }
 //
 #userHeader {
-  // background: black;
   z-index: 1;
   width: 100%;
   height: 6%;
   position: fixed;
   bottom: 0;
+  font-size: 2em;
+  a {
+    color: #6D4095;
+  }
 }
 //
 .header {
@@ -83,4 +80,12 @@ body {
     height: 10%;
     position: fixed;
     bottom: 0;
+}
+
+#newSequence {
+  z-index: 1;
+  height: 6%;
+  position: fixed;
+  bottom: 0;
+  margin-left: 35%;
 }

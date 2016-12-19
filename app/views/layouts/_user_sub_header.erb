@@ -1,5 +1,7 @@
 <div class="returnRoutes">
-  <div class="goBack"><%= render 'layouts/go_back' %></div>
+  <div class="linkText" id="goBack">
+    <%= link_to "Go Back", root_path %>
+  </div>
   <div class='linkText' id="logOut">
     <%= link_to "Log Out", log_out_path %>
   </div>
