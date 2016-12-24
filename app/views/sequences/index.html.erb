@@ -13,12 +13,13 @@
   <body>
     <div id="sequenceHeader">
       <% if current_user %>
-        <h1>Please select a yoga sequence:</h1>
-      <% if longest_sequence %>
+        <span><h1>Please select a yoga sequence: <h4><%= collection_select(:sequence, :sequence_id, @sequences, :id, :title, {:class => 'sequence_selection'}) %></h4>
+        </h1></span>
+      <!-- <% if longest_sequence %>
         <h3>The sequence with the most poses is "<%= longest_sequence.title %>"</h3>
-      <% end %>
+      <% end %> -->
     </div>
-    <div id="sequences">
+    <!-- <div id="sequences">
       <div class="row">
         <% @sequences.each do |sequence| %>
           <div class="col-lg-4">
@@ -26,7 +27,7 @@
           </div>
         <% end %>
       </div>
-    </div>
+    </div> -->
     <div class="navBar">
       <hr width="25%" />
       <h2 id="newSequence">

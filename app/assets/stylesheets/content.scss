@@ -11,10 +11,11 @@ body {
 }
 
 .chakras {
-  margin-left: 45.2%;
+  margin-left: 43.8%;
   margin-right: auto;
   width: 10%;
-  margin-top: -75px;
+  margin-top: 40px;
+  position: fixed;
 }
 
 .chakraIcon {
@@ -88,4 +89,22 @@ body {
   position: fixed;
   bottom: 0;
   margin-left: 35%;
+}
+
+.sequence_selection {
+
+}
+
+.sequenceHeader {
+  width: 100%;
+}
+
+.sequenceInfo {
+  text-align: center;
+}
+
+#sequenceTitle {
+  font-size: 2em;
+  color: #D55200;
+
 }
